@@ -1,19 +1,42 @@
 import express, { Application } from "express";
 
+import enrutadorIndex from "./routes/index.route";
+
+import enrutadorAsistencia  from "./routes/asistecia.route";
+
 export class server {
 
     app:Application;
 
     constructor()
     {
-        this.app = express()
+        this.app = express();
+        this.routes();
+        this.configuracion();
+        this.middleware();
         
     }
 
-    // motodo encargado de correr el servidor bajo puerto determinado 
+    configuracion()
+    {
+        this.app.set('port', process.env.port || 3000);
+    }
+
+    routes()
+    {
+        this.app.use(enrutadorIndex);
+        this.app.use(enrutadorAsistencia);
+    }
+
+    middleware()
+    {
+        this.app.use(express.json())
+    }
+
+    // metodo encargado de correr el servidor bajo puerto determinado 
     listen()
     {
-        this.app.listen(3000)
+        this.app.listen(this.app.get('port'));
         console.log('servidor corriendo en el puerto 3000');
     }
 
