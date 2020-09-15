@@ -11,4 +11,4 @@ export class AsistenciaController
         return res.json('aca se listaran los pagos');
     }
 
-}
+} 
