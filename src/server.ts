@@ -11,9 +11,10 @@ export class server {
     constructor()
     {
         this.app = express();
-        this.routes();
         this.configuracion();
         this.middleware();
+        this.routes();
+        
         
     }
 
