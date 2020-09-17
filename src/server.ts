@@ -4,6 +4,8 @@ import enrutadorIndex from "./routes/index.route";
 
 import enrutadorAsistencia  from "./routes/asistecia.route";
 
+import  enrutadorPagos  from "./routes/pagos.route";
+
 export class server {
 
     app:Application;
@@ -27,6 +29,7 @@ export class server {
     {
         this.app.use(enrutadorIndex);
         this.app.use(enrutadorAsistencia);
+        this.app.use(enrutadorPagos);
     }
 
     middleware()
