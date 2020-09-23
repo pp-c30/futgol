@@ -1,4 +1,4 @@
-export interface Iasistecia
+export interface Iasistencia
 {
     id_asistecia?:number;
     id_socio:number;

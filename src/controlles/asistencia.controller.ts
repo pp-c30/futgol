@@ -2,7 +2,7 @@ import { conexion } from "../database";
 
 import { Request, Response, Router } from "express";
 
-import { Iasistecia } from "../models/asistencia";
+import { Iasistencia } from "../models/asistencia";
 
 export class AsistenciaController
 {
@@ -12,9 +12,9 @@ export class AsistenciaController
         //se logra la connexion con la base de datos 
         const db = await conexion();
 
-        let asistecia = await db.query('selec * from asistecia');
+        let asistencia = await db.query('selec * from asistencia');
 
-        return res.json(asistecia);
+        return res.json(asistencia);
 
     }
 
@@ -25,9 +25,9 @@ export class AsistenciaController
         //conecion con la base de datos 
         const db = await conexion();
 
-        let asistecia:Iasistecia = req.body;
+        let asistencia:Iasistencia = req.body;
 
-        await db.query('insert into asistencia set ?',[asistecia]);
+        await db.query('insert into asistencia set ?',[asistencia]);
 
         return res.json('la asistencia fue guardada exitosamente');
 

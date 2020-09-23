@@ -17,8 +17,8 @@ class AsistenciaController {
         return __awaiter(this, void 0, void 0, function* () {
             //se logra la connexion con la base de datos 
             const db = yield database_1.conexion();
-            let asistecia = yield db.query('selec * from asistecia');
-            return res.json(asistecia);
+            let asistencia = yield db.query('selec * from asistencia');
+            return res.json(asistencia);
         });
     }
     //guardado de asistencia (no funciona todavia)
@@ -26,8 +26,8 @@ class AsistenciaController {
         return __awaiter(this, void 0, void 0, function* () {
             //conecion con la base de datos 
             const db = yield database_1.conexion();
-            let asistecia = req.body;
-            yield db.query('insert into asistencia set ?', [asistecia]);
+            let asistencia = req.body;
+            yield db.query('insert into asistencia set ?', [asistencia]);
             return res.json('la asistencia fue guardada exitosamente');
         });
     }
