@@ -9,58 +9,58 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AsistenciaController = void 0;
+exports.pagosController = void 0;
 const database_1 = require("../database");
-class AsistenciaController {
-    //listado de asistecia (funcionando corectamente)
-    listarAsistencia(req, res) {
+class pagosController {
+    //listado de pago 
+    listarPagos(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //se logra la connexion con la base de datos 
             const db = yield database_1.conexion();
-            let asistecia = yield db.query('selec * from asistecia');
-            return res.json(asistecia);
+            let pagos = yield db.query('selec * from pagos');
+            return res.json(pagos);
         });
     }
-    //guardado de asistencia (no funciona todavia)
-    guardarAsistencia(req, res) {
+    //guardado de pagos
+    guardarpagos(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //conecion con la base de datos 
             const db = yield database_1.conexion();
-            let asistecia = req.body;
-            yield db.query('insert into asistencia set ?', [asistecia]);
-            return res.json('la asistencia fue guardada exitosamente');
+            let pagos = req.body;
+            yield db.query('insert into pagos set ?', [pagos]);
+            return res.json('el pago fue guardada exitosamente');
         });
     }
-    //eliminacion de asistencia 
-    eleminarAsistencia(req, res) {
+    //eliminacion de pagos 
+    eleminarPagos(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //conexion con la base de datos 
             const db = yield database_1.conexion();
-            let codigo = req.params.codigo_asistencia;
-            yield db.query("delete from asistencia where id_asistencia = ?", [codigo]);
-            return res.json('la asistencia se elimino correctame');
+            let codigo = req.params.codigo_pagos;
+            yield db.query("delete from pagos where id_pagos = ?", [codigo]);
+            return res.json('el pago se elimino correctame');
         });
     }
-    //actualizacion de asistencia 
-    actualizarAsistencia(req, res) {
+    //actualizacion de pagos
+    actualizarPagos(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //conexion con la base de datos 
             const db = yield database_1.conexion();
-            let codigo = req.params.codigo_asistencia;
-            let nuevos_datos_asistencia = req.body;
-            yield db.query("update asistencia set ? where id_asistencia = ?", [nuevos_datos_asistencia, codigo]);
+            let codigo = req.params.codigo_pagos;
+            let nuevos_datos_pagos = req.body;
+            yield db.query("update pagos set ? where id_pagos = ?", [nuevos_datos_pagos, codigo]);
             return res.json('se actualizo exitosamente');
         });
     }
-    //se optiene solamente una asistencia en particular 
-    obtenerUnaAsistencia(req, res) {
+    //se optiene solamente un pago en particular 
+    obtenerUnPagos(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //conexion con la base de datos 
             const db = yield database_1.conexion();
-            let codigo = req.params.codigo_asistencia;
-            let unaAsistencia = yield db.query("selec * from asistencia where id_asistencia = ?", [codigo]);
-            return res.json(unaAsistencia[0]);
+            let codigo = req.params.codigo_pagos;
+            let unaPago = yield db.query("selec * from pagos where id_pagos = ?", [codigo]);
+            return res.json(unaPago[0]);
         });
     }
 }
-exports.AsistenciaController = AsistenciaController;
+exports.pagosController = pagosController;

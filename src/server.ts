@@ -22,7 +22,7 @@ export class server {
 
     configuracion()
     {
-        this.app.set('port', process.env.port || 3000);
+        this.app.set('port', process.env.port || 3020);
     }
 
     routes()
@@ -41,7 +41,7 @@ export class server {
     listen()
     {
         this.app.listen(this.app.get('port'));
-        console.log('servidor corriendo en el puerto 3000');
+        console.log('servidor corriendo en el puerto 3020');
     }
 
 }

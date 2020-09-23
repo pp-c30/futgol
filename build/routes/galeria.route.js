@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const galeria_controllers_1 = require("../controllers/galeria.controllers");
+let GaleriaController = new galeria_controllers_1.galeriaController();
+const enrutadorGaleria = express_1.Router();
+enrutadorGaleria.route('/galeria').get(galeria_controllers_1.galeriaController.listarGaleria);
+enrutadorGaleria.route('/galeria').post(galeria_controllers_1.galeriaController.guardarGaleria);
+enrutadorGaleria.route('/galeria/:id').delete(galeria_controllers_1.galeriaController.eliminarGaleria);
+enrutadorGaleria.route('/galeria/:id').put(galeria_controllers_1.galeriaController.actualizarGaleria);
+enrutadorGaleria.route('/galeria').get(galeria_controllers_1.galeriaController.obtenerUnGaleria);
