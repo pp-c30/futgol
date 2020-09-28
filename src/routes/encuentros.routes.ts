@@ -1,19 +1,19 @@
 import { Router } from "express";
-import { EncuentrosControllers } from "../controllers/EncuentrosControllers.controllers";
+import { EncuentrosControllers } from "../controlles/encuentros.controller";
 
 const enrutadorEncuentros = Router();
 
-let EncuentrosController = new EncuentrosControllers();
+let encuentrosController = new EncuentrosControllers();
 
 
 //rutas creadas
-enrutadorEncuentros.route('/encuentros').get(EncuentrosController.ListarEncuentros);
+enrutadorEncuentros.route('/encuentros').get(encuentrosController.listarEncuentros);
 
-enrutadorEncuentros.route('/encuentros').post(EncuentrosController.CrearEncuentros);
+enrutadorEncuentros.route('/encuentros').post(encuentrosController.crearEncuentros);
 
-enrutadorEncuentros.route('/encuentros/:id').delete(EncuentrosController.EliminarEncuentros);
+enrutadorEncuentros.route('/encuentros/:id').delete(encuentrosController.eliminarEncuentros);
 
-enrutadorEncuentros.route('/encuentros/:id').put(EncuentrosController.ActualizarEncuentros);
+enrutadorEncuentros.route('/encuentros/:id').put(encuentrosController.actualizarEncuentros);
 
-enrutadorEncuentros.route('/encuentros/:id').get(EncuentrosController.ObtenerEncuentros);
+enrutadorEncuentros.route('/encuentros/:id').get(encuentrosController.obtenerEncuentros);
 export default enrutadorEncuentros;

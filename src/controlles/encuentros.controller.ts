@@ -1,13 +1,13 @@
 import { Response,Request } from "express";
-import { conectar } from "../database";
-import { Idencuentros } from "../models/encuentros";
+import { conexion } from "../database";
+import { Iencuentro } from "../models/encuentros";
 
 export class EncuentrosControllers
 {
     public async listarEncuentros(req:Request,res:Response)
     {
         //conecto con la base de datos
-        const con= await conectar();
+        const con= await conexion();
 
         let encuentros = await con.query('select * from encuentros');
 
@@ -17,10 +17,10 @@ export class EncuentrosControllers
     public async crearEncuentros(req:Request, res:Response)
     {
         //Recibo datos atravez del POST
-        let encuentros:Idencuentros = req.body;
+        let encuentros:Iencuentro = req.body;
 
         //conecto con la base de datos
-        const con = await conectar();
+        const con = await conexion();
 
         //hago INSERT de un encuentro
         await con.query('insert into encuentros set ?', [encuentros]);
@@ -34,7 +34,7 @@ export class EncuentrosControllers
         let id_encuentro_partidos = req.params.id;
 
         //obtenemos conexion con la base de datos
-        let con = await conectar();
+        let con = await conexion();
 
         await con.query('delete from encuentros where id_encuentro_partidos= ?',id_encuentro_partidos);
 
@@ -50,7 +50,7 @@ export class EncuentrosControllers
         let encuentros = req.body;
 
         //se logra la conexion con la base de datos
-        let con = await conectar();
+        let con = await conexion();
 
         await con.query('update encuentro set ? where id_encuentros_partidos = ? ', [encuentros,id_encuentro_partidos]);
 
@@ -63,7 +63,7 @@ export class EncuentrosControllers
         let id_encuentro_partidos = req.params.id;
         
         //se obtiene conexion con base de datos
-        let con = await conectar();
+        let con = await conexion();
         
         //filtro el horario a travez de ID
         let encuentros = await con.query('select * from horarios where id_encuentro_partidos = ?' ,[id_encuentro_partidos]);

@@ -1,5 +1,5 @@
 import { Response,Request } from "express";
-import { conectar } from "../database";
+import { conexion } from "../database";
 import { Ihorario } from "../models/horarios";
 
 export class HorariosControllers
@@ -7,7 +7,7 @@ export class HorariosControllers
     public async listarHorarios(req:Request,res:Response)
     {
         //conecto con la base de datos
-        const con= await conectar();
+        const con= await conexion();
 
         let horarios = await con.query('select * from horarios');
 
@@ -20,7 +20,7 @@ export class HorariosControllers
         let horarios:Ihorario = req.body;
 
         //conecto con la base de datos
-        const con = await conectar();
+        const con = await conexion();
 
         //hago INSERT de un horario
         await con.query('insert into horarios set ?', [horarios]);
@@ -34,7 +34,7 @@ export class HorariosControllers
         let id_horario_entrenamiento = req.params.id;
 
         //obtenemos conexion con la base de datos
-        let con = await conectar();
+        let con = await conexion();
 
         await con.query('delete from horarios where id_horario_entrenamiento= ?',id_horario_entrenamiento);
 
@@ -50,7 +50,7 @@ export class HorariosControllers
         let horarios = req.body;
 
         //se logra la conexion con la base de datos
-        let con = await conectar();
+        let con = await conexion();
 
         await con.query('update horarios set ? where id_horarios_entrenamiento = ? ', [horarios,id_horario_entrenamiento]);
 
@@ -63,7 +63,7 @@ export class HorariosControllers
         let id_horario_entrenamiento = req.params.id;
         
         //se obtiene conexion con base de datos
-        let con = await conectar();
+        let con = await conexion();
         
         //filtro el horario a travez de ID
         let horarios = await con.query('select * from horarios where id_horario_entrenamiento = ?' ,[id_horario_entrenamiento]);
