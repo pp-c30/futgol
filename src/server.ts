@@ -4,8 +4,6 @@ import morgan  from "morgan";
 
 import cors  from "cors";
 
-import  enrutadorGaleria  from "./routes/galeria.routes";
-
 import enrutadorIndex from "./routes/index.route";
 
 import enrutadorAsistencia  from "./routes/asistencia.route";
