@@ -15,7 +15,7 @@ class EncuentrosControllers {
     listarEncuentros(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //conecto con la base de datos
-            const con = yield database_1.conectar();
+            const con = yield database_1.conexion();
             let encuentros = yield con.query('select * from encuentros');
             return res.json(encuentros);
         });
@@ -25,7 +25,7 @@ class EncuentrosControllers {
             //Recibo datos atravez del POST
             let encuentros = req.body;
             //conecto con la base de datos
-            const con = yield database_1.conectar();
+            const con = yield database_1.conexion();
             //hago INSERT de un encuentro
             yield con.query('insert into encuentros set ?', [encuentros]);
             return res.json('se ha insertado encuentros');
@@ -36,7 +36,7 @@ class EncuentrosControllers {
             //recibimo el ID a traves del DELETE
             let id_encuentro_partidos = req.params.id;
             //obtenemos conexion con la base de datos
-            let con = yield database_1.conectar();
+            let con = yield database_1.conexion();
             yield con.query('delete from encuentros where id_encuentro_partidos= ?', id_encuentro_partidos);
             return res.json('el encuentro se elimino');
         });
@@ -48,7 +48,7 @@ class EncuentrosControllers {
             //recibo un JSON con los datos actualizados 
             let encuentros = req.body;
             //se logra la conexion con la base de datos
-            let con = yield database_1.conectar();
+            let con = yield database_1.conexion();
             yield con.query('update encuentro set ? where id_encuentros_partidos = ? ', [encuentros, id_encuentro_partidos]);
             return res.json('el encuentro se actualizo');
         });
@@ -58,7 +58,7 @@ class EncuentrosControllers {
             //recibo ID para obtener el encuentro
             let id_encuentro_partidos = req.params.id;
             //se obtiene conexion con base de datos
-            let con = yield database_1.conectar();
+            let con = yield database_1.conexion();
             //filtro el horario a travez de ID
             let encuentros = yield con.query('select * from horarios where id_encuentro_partidos = ?', [id_encuentro_partidos]);
             //consigo el encuentro de partidos
