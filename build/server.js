@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.server = void 0;
 const express_1 = __importDefault(require("express"));
+const morgan_1 = __importDefault(require("morgan"));
+const cors_1 = __importDefault(require("cors"));
 const index_route_1 = __importDefault(require("./routes/index.route"));
 const asistecia_route_1 = __importDefault(require("./routes/asistecia.route"));
 const pagos_route_1 = __importDefault(require("./routes/pagos.route"));
@@ -24,7 +26,11 @@ class server {
         this.app.use(pagos_route_1.default);
     }
     middleware() {
+        //le permite a nuestro servidor recibir y enviar datos en formato JSON
         this.app.use(express_1.default.json());
+        //mustra de las peticiones
+        this.app.use(morgan_1.default('dev'));
+        this.app.use(cors_1.default());
     }
     // metodo encargado de correr el servidor bajo puerto determinado 
     listen() {

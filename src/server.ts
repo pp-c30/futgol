@@ -1,5 +1,9 @@
 import express, { Application } from "express";
 
+import morgan  from "morgan";
+
+import cors  from "cors";
+
 import enrutadorIndex from "./routes/index.route";
 
 import enrutadorAsistencia  from "./routes/asistecia.route";
@@ -34,7 +38,16 @@ export class server {
 
     middleware()
     {
-        this.app.use(express.json())
+        //le permite a nuestro servidor recibir y enviar datos en formato JSON
+        this.app.use(express.json());
+
+        //mustra de las peticiones
+        this.app.use(morgan('dev'));
+
+        this.app.use(cors());
+
+        
+
     }
 
     // metodo encargado de correr el servidor bajo puerto determinado 
