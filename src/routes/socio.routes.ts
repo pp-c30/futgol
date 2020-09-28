@@ -1,12 +1,12 @@
 import { Router } from "express";
 
-import { socioController } from "../controllers/socio.controllers";
+import { SocioController } from "../controllers/socio.controller";
 
-let SocioController = new socioController();
+let socioController = new SocioController();
 
 const enrutadorSocio = Router();
 
-enrutadorSocio.route('/socio').get(socioController.listarSocio);
+enrutadorSocio.route('/socio').get(socioController.listarSocios);
 enrutadorSocio.route('/socio').post(socioController.guardarSocio);
 enrutadorSocio.route('/socio/:id').delete(socioController.eliminarSocio);
 enrutadorSocio.route('/socio/:id').put(socioController.actualizarSocio);

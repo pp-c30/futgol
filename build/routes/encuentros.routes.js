@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const encuentros_controller_1 = require("../controlles/encuentros.controller");
+const encuentros_controller_1 = require("../controllers/encuentros.controller");
 const enrutadorEncuentros = express_1.Router();
 let encuentrosController = new encuentros_controller_1.EncuentrosControllers();
 //rutas creadas

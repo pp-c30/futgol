@@ -6,7 +6,7 @@ import cors  from "cors";
 
 import enrutadorIndex from "./routes/index.route";
 
-import enrutadorAsistencia  from "./routes/asistecia.route";
+import enrutadorAsistencia  from "./routes/asistencia.route";
 
 import  enrutadorPagos  from "./routes/pagos.route";
 

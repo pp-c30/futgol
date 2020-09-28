@@ -4,7 +4,7 @@ import { Request, Response, Router } from "express";
 
 import { Ipagos } from "../models/pagos";
 
-export class pagosController
+export class PagosController
 {
     //listado de pago 
     public async listarPagos(req:Request, res:Response)

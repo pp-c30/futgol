@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { HorariosControllers } from "../controlles/horarios.controller";
+import { HorariosControllers } from "../controllers/horarios.controller";
 
 const enrutadorHorarios = Router();
 

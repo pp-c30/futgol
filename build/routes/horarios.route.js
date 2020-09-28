@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const horarios_controller_1 = require("../controlles/horarios.controller");
+const horarios_controller_1 = require("../controllers/horarios.controller");
 const enrutadorHorarios = express_1.Router();
 let horariosController = new horarios_controller_1.HorariosControllers();
 //rutas creadasss

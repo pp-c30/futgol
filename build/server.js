@@ -8,7 +8,7 @@ const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const index_route_1 = __importDefault(require("./routes/index.route"));
-const asistecia_route_1 = __importDefault(require("./routes/asistecia.route"));
+const asistencia_route_1 = __importDefault(require("./routes/asistencia.route"));
 const pagos_route_1 = __importDefault(require("./routes/pagos.route"));
 class server {
     constructor() {
@@ -22,7 +22,7 @@ class server {
     }
     routes() {
         this.app.use(index_route_1.default);
-        this.app.use(asistecia_route_1.default);
+        this.app.use(asistencia_route_1.default);
         this.app.use(pagos_route_1.default);
     }
     middleware() {

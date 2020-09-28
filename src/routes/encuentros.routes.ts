@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { EncuentrosControllers } from "../controlles/encuentros.controller";
+import { EncuentrosControllers } from "../controllers/encuentros.controller";
 
 const enrutadorEncuentros = Router();
 
