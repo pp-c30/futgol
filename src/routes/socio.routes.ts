@@ -11,3 +11,5 @@ enrutadorSocio.route('/socio').post(socioController.guardarSocio);
 enrutadorSocio.route('/socio/:id').delete(socioController.eliminarSocio);
 enrutadorSocio.route('/socio/:id').put(socioController.actualizarSocio);
 enrutadorSocio.route('/socio').get(socioController.obtenerUnSocio);
+
+export default enrutadorSocio;
