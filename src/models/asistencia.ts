@@ -6,5 +6,4 @@ export interface Iasistencia
     asistencia:number;
     categoria:number;
 
-
 }
