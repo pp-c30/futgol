@@ -12,7 +12,7 @@ export class PagosController
           //se logra la connexion con la base de datos 
           const db = await conexion();
 
-          let pagos = await db.query('selec * from pagos');
+          let pagos = await db.query('select * from pagos');
   
           return res.json(pagos);
   

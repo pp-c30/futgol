@@ -17,7 +17,7 @@ class PagosController {
         return __awaiter(this, void 0, void 0, function* () {
             //se logra la connexion con la base de datos 
             const db = yield database_1.conexion();
-            let pagos = yield db.query('selec * from pagos');
+            let pagos = yield db.query('select * from pagos');
             return res.json(pagos);
         });
     }

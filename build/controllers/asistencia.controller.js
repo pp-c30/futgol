@@ -17,7 +17,7 @@ class AsistenciaController {
         return __awaiter(this, void 0, void 0, function* () {
             //se logra la connexion con la base de datos 
             const db = yield database_1.conexion();
-            let asistencia = yield db.query('selec * from asistencia');
+            let asistencia = yield db.query('select * from asistencia');
             return res.json(asistencia);
         });
     }
@@ -58,7 +58,7 @@ class AsistenciaController {
             //conexion con la base de datos 
             const db = yield database_1.conexion();
             let codigo = req.params.codigo_asistencia;
-            let unaAsistencia = yield db.query("selec * from asistencia where id_asistencia = ?", [codigo]);
+            let unaAsistencia = yield db.query("select * from asistencia where id_asistencia = ?", [codigo]);
             return res.json(unaAsistencia[0]);
         });
     }

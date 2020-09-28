@@ -12,7 +12,7 @@ export class AsistenciaController
         //se logra la connexion con la base de datos 
         const db = await conexion();
 
-        let asistencia = await db.query('selec * from asistencia');
+        let asistencia = await db.query('select * from asistencia');
 
         return res.json(asistencia);
 
@@ -72,7 +72,7 @@ export class AsistenciaController
 
         let codigo = req.params.codigo_asistencia;
 
-        let unaAsistencia = await db.query("selec * from asistencia where id_asistencia = ?",[codigo]);
+        let unaAsistencia = await db.query("select * from asistencia where id_asistencia = ?",[codigo]);
     
         return res.json(unaAsistencia[0]);
 
