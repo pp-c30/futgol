@@ -37,16 +37,16 @@ export class GaleriaController
         return res.json('La galeria fue guardado exitosamente');
     }
 
-    public async eliminarGalereia(req:Request,res:Response)
+    public async eliminarGaleria(req:Request,res:Response)
 {
-    const db = await conexion();
+   //conexion con la base de datos 
+   const db = await conexion();
 
-    let id = req.params.id;
+   let codigo = req.params.codigo_galeria;
+   
+   await db.query("delete from galeria where id_galeria = ?",[codigo]);
 
-
-    await db.query("delete from galeria where id_galeria = ?",[id]);
-
-    return res.json('La galeria se elimino correctamente');
+   return res.json('la imagen se elimino correctame');
 
 }
 
@@ -54,7 +54,7 @@ public async actualizarGaleria(req:Request,res:Response)
 {
     const db = await conexion();
 
-    let codigo = req.params.id;
+    let codigo = req.params.codigo_galeria;
 
     let nuevos_datos_galeria = req.body;
 
@@ -68,13 +68,14 @@ public async actualizarGaleria(req:Request,res:Response)
 public async obtenerUnGaleria(req:Request,res:Response)
 
 {
-    const db = await conexion();
+   //conexion con la base de datos 
+   const db = await conexion();
 
-    let codigo = req.params.id;
+   let codigo = req.params.codigo_galeria;
 
-    let unGaleria = await db.query("select * from galeria where id_galeria = ?",[codigo]);
+   let unaGaleria = await db.query("select * from galeria where id_galeria = ?",[codigo]);
 
-    return res.json(unGaleria);
+   return res.json(unaGaleria[0]);
 
 }
 

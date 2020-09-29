@@ -8,8 +8,8 @@ const enrutadorGaleria = Router();
 
 enrutadorGaleria.route('/galeria').get(galeriaController.listarGaleria);
 enrutadorGaleria.route('/galeria').post(galeriaController.guardarGaleria);
-enrutadorGaleria.route('/galeria/:id').delete(galeriaController.eliminarGalereia);
-enrutadorGaleria.route('/galeria/:id').put(galeriaController.actualizarGaleria);
-enrutadorGaleria.route('/galeria').get(galeriaController.obtenerUnGaleria);
+enrutadorGaleria.route('/galeria/:codigo_galeria').delete(galeriaController.eliminarGaleria);
+enrutadorGaleria.route('/galeria/:codigo_galeria').put(galeriaController.actualizarGaleria);
+enrutadorGaleria.route('/galeria/:codigo_galeria').get(galeriaController.obtenerUnGaleria);
 
 export default enrutadorGaleria;

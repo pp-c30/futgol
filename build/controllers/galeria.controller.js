@@ -31,18 +31,19 @@ class GaleriaController {
             return res.json('La galeria fue guardado exitosamente');
         });
     }
-    eliminarGalereia(req, res) {
+    eliminarGaleria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            //conexion con la base de datos 
             const db = yield database_1.conexion();
-            let id = req.params.id;
-            yield db.query("delete from galeria where id_galeria = ?", [id]);
-            return res.json('La galeria se elimino correctamente');
+            let codigo = req.params.codigo_galeria;
+            yield db.query("delete from galeria where id_galeria = ?", [codigo]);
+            return res.json('la imagen se elimino correctame');
         });
     }
     actualizarGaleria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
-            let codigo = req.params.id;
+            let codigo = req.params.codigo_galeria;
             let nuevos_datos_galeria = req.body;
             yield db.query("update galeria set ? where id_galeria = ?", [nuevos_datos_galeria, codigo]);
             return res.json('Se actualizo exitosamente');
@@ -50,10 +51,11 @@ class GaleriaController {
     }
     obtenerUnGaleria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            //conexion con la base de datos 
             const db = yield database_1.conexion();
-            let codigo = req.params.id;
-            let unGaleria = yield db.query("select * from galeria where id_galeria = ?", [codigo]);
-            return res.json(unGaleria);
+            let codigo = req.params.codigo_galeria;
+            let unaGaleria = yield db.query("select * from galeria where id_galeria = ?", [codigo]);
+            return res.json(unaGaleria[0]);
         });
     }
 }
