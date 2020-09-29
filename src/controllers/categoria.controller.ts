@@ -9,7 +9,7 @@ export class CategoriaControllers
         //conecto con la base de datos
         const con= await conexion();
 
-        let categoria = await con.query('select * from categoria');
+        let categoria = await con.query('select * from categoria_socio');
 
         return res.json(categoria);
     }
@@ -17,26 +17,25 @@ export class CategoriaControllers
     public async crearCategoria(req:Request, res:Response)
     {
         //Recibo datos atravez del POST
-        let categoria:Icategoria = req.body;
+        let categoria_socio:Icategoria = req.body;
 
         //conecto con la base de datos
         const con = await conexion();
 
         //hago INSERT de una categoria
-        await con.query('insert into categoria set ?', [categoria]);
+        await con.query('insert into categoria_socio set ?', [categoria_socio]);
 
         return res.json('se ha insertado categoria');
     }
 
     public async eliminarCategoria(req:Request,res:Response)
     {
-        //recibimo el ID a traves del DELETE
-        let id_categoria_socio = req.params.id;
-
         //obtenemos conexion con la base de datos
-        let con = await conexion();
+        const db = await conexion();
 
-        await con.query('delete from encuentros where id_categoria_socio= ?',id_categoria_socio);
+        let codigo = req.params.codigo_categoria_socio;
+
+        await db.query('delete from categoria_socio where id_categoria_socio = ?',[codigo]);
 
         return res.json('la categoria se elimino');
     }
@@ -52,7 +51,7 @@ export class CategoriaControllers
         //se logra la conexion con la base de datos
         let con = await conexion();
 
-        await con.query('update categoria set ? where id_categoria_socio = ? ', [categoria,id_categoria_socio]);
+        await con.query('update categoria_socio set ? where id_categoria_socio = ? ', [categoria,id_categoria_socio]);
 
         return res.json('la categoria se actualizo');
     }
@@ -66,7 +65,7 @@ export class CategoriaControllers
         let con = await conexion();
         
         //filtro la categoria a travez de ID
-        let categoria = await con.query('select * from categoria where id_categoria_socio = ?' ,[id_categoria_socio]);
+        let categoria = await con.query('select * from categoria_socio where id_categoria_socio = ?' ,[id_categoria_socio]);
         
         //consigo la categoria
         return res.json(categoria[0]);

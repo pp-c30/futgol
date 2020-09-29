@@ -9,61 +9,60 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EncuentrosControllers = void 0;
+exports.CategoriaControllers = void 0;
 const database_1 = require("../database");
-class EncuentrosControllers {
-    listarEncuentros(req, res) {
+class CategoriaControllers {
+    listarCategoria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //conecto con la base de datos
             const con = yield database_1.conexion();
-            let encuentros = yield con.query('select * from encuentros');
-            return res.json(encuentros);
+            let categoria = yield con.query('select * from categoria_socio');
+            return res.json(categoria);
         });
     }
-    crearEncuentros(req, res) {
+    crearCategoria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //Recibo datos atravez del POST
-            let encuentros = req.body;
+            let categoria_socio = req.body;
             //conecto con la base de datos
             const con = yield database_1.conexion();
-            //hago INSERT de un encuentro
-            yield con.query('insert into encuentros set ?', [encuentros]);
-            return res.json('se ha insertado encuentros');
+            //hago INSERT de una categoria
+            yield con.query('insert into categoria_socio set ?', [categoria_socio]);
+            return res.json('se ha insertado categoria');
         });
     }
-    eliminarEncuentros(req, res) {
+    eliminarCategoria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            //recibimo el ID a traves del DELETE
-            let id_encuentro_partidos = req.params.id;
             //obtenemos conexion con la base de datos
-            let con = yield database_1.conexion();
-            yield con.query('delete from encuentros where id_encuentro_partidos= ?', id_encuentro_partidos);
-            return res.json('el encuentro se elimino');
+            const db = yield database_1.conexion();
+            let codigo = req.params.codigo_categoria_socio;
+            yield db.query('delete from categoria_socio where id_categoria_socio = ?', [codigo]);
+            return res.json('la categoria se elimino');
         });
     }
-    actualizarEncuentros(req, res) {
+    actualizarCategoria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            //recibo el ID de los encuentros a actualizar
-            let id_encuentro_partidos = req.params.id;
+            //recibo el ID de las categorias a actualizar
+            let id_categoria_socio = req.params.id;
             //recibo un JSON con los datos actualizados 
-            let encuentros = req.body;
+            let categoria = req.body;
             //se logra la conexion con la base de datos
             let con = yield database_1.conexion();
-            yield con.query('update encuentro set ? where id_encuentros_partidos = ? ', [encuentros, id_encuentro_partidos]);
-            return res.json('el encuentro se actualizo');
+            yield con.query('update categoria_socio set ? where id_categoria_socio = ? ', [categoria, id_categoria_socio]);
+            return res.json('la categoria se actualizo');
         });
     }
-    obtenerEncuentros(req, res) {
+    obtenercategoria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            //recibo ID para obtener el encuentro
-            let id_encuentro_partidos = req.params.id;
+            //recibo ID para obtener la categoria
+            let id_categoria_socio = req.params.id;
             //se obtiene conexion con base de datos
             let con = yield database_1.conexion();
-            //filtro el encuentro a travez de ID
-            let encuentros = yield con.query('select * from encuentro where id_encuentro_partidos = ?', [id_encuentro_partidos]);
-            //consigo el encuentro de partidos
-            return res.json(encuentros[0]);
+            //filtro la categoria a travez de ID
+            let categoria = yield con.query('select * from categoria_socio where id_categoria_socio = ?', [id_categoria_socio]);
+            //consigo la categoria
+            return res.json(categoria[0]);
         });
     }
 }
-exports.EncuentrosControllers = EncuentrosControllers;
+exports.CategoriaControllers = CategoriaControllers;
