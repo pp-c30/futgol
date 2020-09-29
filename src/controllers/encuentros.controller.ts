@@ -65,8 +65,8 @@ export class EncuentrosControllers
         //se obtiene conexion con base de datos
         let con = await conexion();
         
-        //filtro el horario a travez de ID
-        let encuentros = await con.query('select * from horarios where id_encuentro_partidos = ?' ,[id_encuentro_partidos]);
+        //filtro el encuentro a travez de ID
+        let encuentros = await con.query('select * from encuentro where id_encuentro_partidos = ?' ,[id_encuentro_partidos]);
         
         //consigo el encuentro de partidos
         return res.json(encuentros[0]);
