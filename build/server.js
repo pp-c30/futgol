@@ -10,6 +10,8 @@ const cors_1 = __importDefault(require("cors"));
 const index_route_1 = __importDefault(require("./routes/index.route"));
 const asistencia_route_1 = __importDefault(require("./routes/asistencia.route"));
 const pagos_route_1 = __importDefault(require("./routes/pagos.route"));
+const galeria_route_1 = __importDefault(require("./routes/galeria.route"));
+const socio_routes_1 = __importDefault(require("./routes/socio.routes"));
 class server {
     constructor() {
         this.app = express_1.default();
@@ -24,6 +26,8 @@ class server {
         this.app.use(index_route_1.default);
         this.app.use(asistencia_route_1.default);
         this.app.use(pagos_route_1.default);
+        this.app.use(galeria_route_1.default);
+        this.app.use(socio_routes_1.default);
     }
     middleware() {
         //le permite a nuestro servidor recibir y enviar datos en formato JSON

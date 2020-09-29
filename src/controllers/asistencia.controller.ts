@@ -19,7 +19,7 @@ export class AsistenciaController
     }
 
 
-    //guardado de asistencia (no funciona todavia)
+    //guardado de asistencia 
     public async guardarAsistencia(req:Request, res:Response)
     {
         //conecion con la base de datos 

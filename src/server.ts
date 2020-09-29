@@ -10,6 +10,10 @@ import enrutadorAsistencia  from "./routes/asistencia.route";
 
 import  enrutadorPagos  from "./routes/pagos.route";
 
+import enrutadorGaleria from "./routes/galeria.route";
+
+import enrutadorSocio from "./routes/socio.routes";
+
 export class server {
 
     app:Application;
@@ -34,6 +38,8 @@ export class server {
         this.app.use(enrutadorIndex);
         this.app.use(enrutadorAsistencia);
         this.app.use(enrutadorPagos);
+        this.app.use(enrutadorGaleria);
+        this.app.use(enrutadorSocio);
     }
 
     middleware()

@@ -21,7 +21,7 @@ class AsistenciaController {
             return res.json(asistencia);
         });
     }
-    //guardado de asistencia (no funciona todavia)
+    //guardado de asistencia 
     guardarAsistencia(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //conecion con la base de datos 

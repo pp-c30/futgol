@@ -72,7 +72,7 @@ export class PagosController
 
         let codigo = req.params.codigo_pagos;
 
-        let unaPago = await db.query("selec * from pagos where id_pagos = ?",[codigo]);
+        let unaPago = await db.query("select * from pagos where id_pagos = ?",[codigo]);
     
         return res.json(unaPago[0]);
 
