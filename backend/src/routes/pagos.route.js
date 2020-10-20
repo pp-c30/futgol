@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var pagos_controller_1 = require("../controllers/pagos.controller");
+var pagosController = new pagos_controller_1.PagosController();
+var enrutadorPagos = express_1.Router();
+enrutadorPagos.route('/pagos').get(pagosController.listarPagos);
+enrutadorPagos.route('/pagos').post(pagosController.guardarpagos);
+enrutadorPagos.route('/pagos/:codigo_pagos').delete(pagosController.eleminarPagos);
+enrutadorPagos.route('/pagos/:codigo_pagos').put(pagosController.actualizarPagos);
+enrutadorPagos.route('/pagos/:codigo_pagos').get(pagosController.listarPagos);
+exports.default = enrutadorPagos;

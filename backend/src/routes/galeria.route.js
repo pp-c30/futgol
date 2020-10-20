@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var galeria_controller_1 = require("../controllers/galeria.controller");
+var galeriaController = new galeria_controller_1.GaleriaController();
+var enrutadorGaleria = express_1.Router();
+enrutadorGaleria.route('/galeria').get(galeriaController.listarGaleria);
+enrutadorGaleria.route('/galeria').post(galeriaController.guardarGaleria);
+enrutadorGaleria.route('/galeria/:codigo_galeria').delete(galeriaController.eliminarGaleria);
+enrutadorGaleria.route('/galeria/:codigo_galeria').put(galeriaController.actualizarGaleria);
+enrutadorGaleria.route('/galeria/:codigo_galeria').get(galeriaController.obtenerUnGaleria);
+exports.default = enrutadorGaleria;
