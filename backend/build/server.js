@@ -23,7 +23,7 @@ class server {
         this.routes();
     }
     configuracion() {
-        this.app.set('port', process.env.port || 3050);
+        this.app.set('port', process.env.port || 3060);
     }
     routes() {
         this.app.use(index_route_1.default);
@@ -45,7 +45,7 @@ class server {
     // metodo encargado de correr el servidor bajo puerto determinado 
     listen() {
         this.app.listen(this.app.get('port'));
-        console.log('servidor corriendo en el puerto 3050');
+        console.log('servidor corriendo en el puerto 3060');
     }
 }
 exports.server = server;
