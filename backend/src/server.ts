@@ -36,7 +36,7 @@ export class server {
 
     configuracion()
     {
-        this.app.set('port', process.env.port || 3060);
+        this.app.set('port', process.env.port || 3030);
     }
 
     routes()
@@ -70,7 +70,7 @@ export class server {
     listen()
     {
         this.app.listen(this.app.get('port'));
-        console.log('servidor corriendo en el puerto 3060');
+        console.log('servidor corriendo en el puerto 3030');
     }
 
 }
