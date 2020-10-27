@@ -18,4 +18,10 @@ export class PagosService {
   }
 
 
+  savePago(unPago:Ipago)
+  {
+   return this.http.post('http://localhost:3030/pagos',unPago);
+  }
+
+
 }

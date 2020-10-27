@@ -35,21 +35,21 @@
             <div class="card-headre"> Formulario de pagos</div>
             <div class="card-body">
 
-                <form>
+                <form [Formogrup]="formPago" (ngSubmit)="guardarPago()">
                     <div class="form-group">
-                        <input placeholder="Ingrese ID socio" type="text" class="form-control">
+                        <input formControlName="id_socio " placeholder="Ingrese ID socio" type="text" class="form-control">
                     </div>
                     <div class="from-group">
-                        <input placeholder="Fecha de pago" type="text" class="form-control">
+                        <input formControlName="fecha_pago" placeholder="Fecha de pago" type="text" class="form-control">
                     </div>   
                     <div class="from-group">
-                        <input placeholder="Ingrese la cuota" type="text" class="form-control">
+                        <input formControlName="cuota" placeholder="Ingrese la cuota" type="text" class="form-control">
                     </div>
                     <div class="from-group">
-                        <input placeholder="Ingrese el periodo del mes" type="text" class="form-control">
+                        <input formControlName="periodo_mes placeholder="Ingrese el periodo del mes" type="text" class="form-control">
                     </div>
                     <div class="from-group">
-                        <input placeholder="Ingrese el periodo del año" type="text" class="form-control">
+                        <input formControlName="periodo_anio" placeholder="Ingrese el periodo del año" type="text" class="form-control">
                     </div>
 
                     <button class="btn btn-success">guardar pago</button>
