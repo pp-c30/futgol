@@ -16,8 +16,12 @@
             </thead>
 
             <tbody>
-                <tr>
-                
+                <tr *ngFor="let pago of listpagos">
+                    <td>{{pago.id_socio}}</td>
+                    <td>{{pago.fecha_pago}}</td>
+                    <td>{{pago.cuota}}</td>
+                    <td>{{pago.periodo_mes}</td>
+                    <td>{{pago.periodo_anio}}</td>
                 </tr>
             </tbody>
 
