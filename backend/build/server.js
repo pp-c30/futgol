@@ -23,7 +23,11 @@ class server {
         this.routes();
     }
     configuracion() {
+<<<<<<< HEAD
         this.app.set('port', process.env.port || 3060);
+=======
+        this.app.set('port', process.env.port || 3020);
+>>>>>>> 59b66fe822cb53c1d1604a373e21d631eb11aac8
     }
     routes() {
         this.app.use(index_route_1.default);
@@ -45,7 +49,11 @@ class server {
     // metodo encargado de correr el servidor bajo puerto determinado 
     listen() {
         this.app.listen(this.app.get('port'));
+<<<<<<< HEAD
         console.log('servidor corriendo en el puerto 3060');
+=======
+        console.log('servidor corriendo en el puerto 3020');
+>>>>>>> 59b66fe822cb53c1d1604a373e21d631eb11aac8
     }
 }
 exports.server = server;

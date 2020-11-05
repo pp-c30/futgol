@@ -1,0 +1,64 @@
+<div class="row">
+
+
+    <div class="col-sm-8">
+        
+        <table class="table table-striped">
+
+            <thead>
+                <tr>
+                    <th>id del socio</th>
+                    <th>fecha de pago</th>
+                    <th>cuota</th>
+                    <th>periodo del mes</th>
+                    <th>periodo del año</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let pago of listpagos">
+                    <td>{{pago.id_socio}}</td>
+                    <td>{{pago.fecha_pago}}</td>
+                    <td>{{pago.cuota}}</td>
+                    <td>{{pago.periodo_mes}</td>
+                    <td>{{pago.periodo_anio}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="col-sim-4">
+
+        <div class="card">
+            <div class="card-headre"> Formulario de pagos</div>
+            <div class="card-body">
+
+                <form [Formogrup]="formPago" (ngSubmit)="guardarPago()">
+                    <div class="form-group">
+                        <input formControlName="id_socio " placeholder="Ingrese ID socio" type="text" class="form-control">
+                    </div>
+                    <div class="from-group">
+                        <input formControlName="fecha_pago" placeholder="Fecha de pago" type="text" class="form-control">
+                    </div>   
+                    <div class="from-group">
+                        <input formControlName="cuota" placeholder="Ingrese la cuota" type="text" class="form-control">
+                    </div>
+                    <div class="from-group">
+                        <input formControlName="periodo_mes placeholder="Ingrese el periodo del mes" type="text" class="form-control">
+                    </div>
+                    <div class="from-group">
+                        <input formControlName="periodo_anio" placeholder="Ingrese el periodo del año" type="text" class="form-control">
+                    </div>
+
+                    <button class="btn btn-success">guardar pago</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
