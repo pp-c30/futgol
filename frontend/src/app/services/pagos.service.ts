@@ -23,5 +23,11 @@ export class PagosService {
    return this.http.post('http://localhost:3020/pagos',unPago);
   }
 
+  updatePago(unPago:Ipago)
+  {
+    let id:number = unPago.id_pagos;
+    return this.http.put('http://localhost:3020/pagos/'+id,unPago);
+  }
+
 
 }

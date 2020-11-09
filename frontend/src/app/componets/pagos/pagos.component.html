@@ -7,21 +7,30 @@
 
             <thead>
                 <tr>
-                    <th>id del socio</th>
-                    <th>fecha de pago</th>
-                    <th>cuota</th>
-                    <th>periodo del mes</th>
-                    <th>periodo del año</th>
+                    <th>ID</th>
+                    <th>Id del socio</th>
+                    <th>Fecha de pago</th>
+                    <th>Cuota</th>
+                    <th>Periodo del mes</th>
+                    <th>Periodo del año</th>
+                    <th>Operaciones</th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr *ngFor="let pago of listPagos">
+                    <td>{{pago.id_pagos}}</td>
                     <td>{{pago.id_socio}}</td>
                     <td>{{pago.fecha_pago}}</td>
                     <td>{{pago.cuota}}</td>
                     <td>{{pago.periodo_mes}}</td>
                     <td>{{pago.periodo_anio}}</td>
+                    <td> 
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-danger">Eliminar</button>
+                            <button (click)="editarPago(pago)" class="btn btn-primary">editar</button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
 
@@ -36,6 +45,8 @@
             <div class="card-body">
 
                 <form [formGroup]="formPago" (ngSubmit)="guardarPago()">
+                    <input formControlName="id_pagos" type="text">
+
                     <div class="form-group">
                         <input formControlName="id_socio" placeholder="Ingrese ID socio" type="text" class="form-control">
                     </div>
