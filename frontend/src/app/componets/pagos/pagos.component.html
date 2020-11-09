@@ -16,11 +16,11 @@
             </thead>
 
             <tbody>
-                <tr *ngFor="let pago of listpagos">
+                <tr *ngFor="let pago of listPagos">
                     <td>{{pago.id_socio}}</td>
                     <td>{{pago.fecha_pago}}</td>
                     <td>{{pago.cuota}}</td>
-                    <td>{{pago.periodo_mes}</td>
+                    <td>{{pago.periodo_mes}}</td>
                     <td>{{pago.periodo_anio}}</td>
                 </tr>
             </tbody>
@@ -29,26 +29,26 @@
 
     </div>
 
-    <div class="col-sim-4">
+    <div class="col-sm-4">
 
         <div class="card">
-            <div class="card-headre"> Formulario de pagos</div>
+            <div class="card-header"> Formulario de pagos</div>
             <div class="card-body">
 
-                <form [Formogrup]="formPago" (ngSubmit)="guardarPago()">
+                <form [formGroup]="formPago" (ngSubmit)="guardarPago()">
                     <div class="form-group">
-                        <input formControlName="id_socio " placeholder="Ingrese ID socio" type="text" class="form-control">
+                        <input formControlName="id_socio" placeholder="Ingrese ID socio" type="text" class="form-control">
                     </div>
-                    <div class="from-group">
+                    <div class="form-group">
                         <input formControlName="fecha_pago" placeholder="Fecha de pago" type="text" class="form-control">
                     </div>   
-                    <div class="from-group">
+                    <div class="form-group">
                         <input formControlName="cuota" placeholder="Ingrese la cuota" type="text" class="form-control">
                     </div>
-                    <div class="from-group">
-                        <input formControlName="periodo_mes placeholder="Ingrese el periodo del mes" type="text" class="form-control">
+                    <div class="form-group">
+                        <input formControlName="periodo_mes" placeholder="Ingrese el periodo del mes" type="text" class="form-control">
                     </div>
-                    <div class="from-group">
+                    <div class="form-group">
                         <input formControlName="periodo_anio" placeholder="Ingrese el periodo del año" type="text" class="form-control">
                     </div>
 

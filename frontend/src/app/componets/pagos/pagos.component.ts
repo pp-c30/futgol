@@ -14,7 +14,7 @@ export class PagosComponent implements OnInit {
 
   listPagos = [];
   
-  formPago: FormGroup
+  formPago: FormGroup;
 
   constructor(private pagosServ:PagosService, private fb:FormBuilder) { 
 
@@ -31,7 +31,7 @@ export class PagosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.obtenerPagos
+    this.obtenerPagos();
   } 
 
   obtenerPagos()

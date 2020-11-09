@@ -14,13 +14,13 @@ export class PagosService {
 
   getpagos()
   {
-   return this.http.get<Ipago[]>('http://localhots:3030/pagos');
+   return this.http.get<Ipago[]>('http://localhost:3020/pagos');
   }
 
 
   savePago(unPago:Ipago)
   {
-   return this.http.post('http://localhost:3030/pagos',unPago);
+   return this.http.post('http://localhost:3020/pagos',unPago);
   }
 
 
