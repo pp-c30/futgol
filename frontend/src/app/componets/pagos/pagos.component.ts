@@ -62,9 +62,10 @@ export class PagosComponent implements OnInit {
     this.pagosServ.savePago(this.formPago.value).subscribe(
       resultado =>{
         console.log(resultado);
+        this.formPago.reset();
         //se refresca la grilla 
         this.obtenerPagos();
-        this.formPago.reset();
+        
        },
        error => console.log(error)
       );
@@ -75,4 +76,17 @@ export class PagosComponent implements OnInit {
   {
     this.formPago.setValue(pago);
   }
+
+  eliminarPago(id:number)
+  {
+    if(confirm('esta seguro que desea ejecutar esta accion')){
+      this.pagosServ.deletePago(id).subscribe(
+        respuesta => {
+          console.log(respuesta);
+          this.obtenerPagos();
+        },
+        error => console.log(error)
+      );
+      }
+    }
 }

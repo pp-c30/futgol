@@ -27,7 +27,7 @@
                     <td>{{pago.periodo_anio}}</td>
                     <td> 
                         <div class="btn-group btn-group-sm">
-                            <button class="btn btn-danger">Eliminar</button>
+                            <button (click)="eliminarPago(pago.id_pagos);" class="btn btn-danger">Eliminar</button>
                             <button (click)="editarPago(pago)" class="btn btn-primary">editar</button>
                         </div>
                     </td>
@@ -45,7 +45,7 @@
             <div class="card-body">
 
                 <form [formGroup]="formPago" (ngSubmit)="guardarPago()">
-                    <input formControlName="id_pagos" type="text">
+                    <input formControlName="id_pagos" type="hidden">
 
                     <div class="form-group">
                         <input formControlName="id_socio" placeholder="Ingrese ID socio" type="text" class="form-control">

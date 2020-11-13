@@ -29,5 +29,10 @@ export class PagosService {
     return this.http.put('http://localhost:3020/pagos/'+id,unPago);
   }
 
+  deletePago(id:number)
+  {
+    return this.http.delete('http://localhost:3020/pagos/'+id);
+  }
+
 
 }
