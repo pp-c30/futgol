@@ -17,6 +17,8 @@ export class PagosComponent implements OnInit {
   
   formPago: FormGroup;
 
+  buscarPago:any;
+
   constructor(private pagosServ:PagosService, private fb:FormBuilder) { 
 
     this.formPago = this.fb.group({

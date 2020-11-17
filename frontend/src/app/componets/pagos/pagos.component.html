@@ -2,7 +2,16 @@
 
 
     <div class="col-sm-8">
-        
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input placeholder="ingrese criterio de busqueda" [(ngModel)]="buscarPago" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+       
         <table class="table table-striped">
 
             <thead>
@@ -18,7 +27,7 @@
             </thead>
 
             <tbody>
-                <tr *ngFor="let pago of listPagos">
+                <tr *ngFor="let pago of listPagos | filter:buscarPago">
                     <td>{{pago.id_pagos}}</td>
                     <td>{{pago.id_socio}}</td>
                     <td>{{pago.fecha_pago}}</td>
