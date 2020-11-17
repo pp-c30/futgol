@@ -7,7 +7,9 @@ import { PagosComponent } from './componets/pagos/pagos.component';
 
 import { HttpClientModule } from "@angular/common/http";
 
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms"
+
+import { Ng2SearchPipeModule, Ng2SearchPipe } from "ng2-search-filter";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

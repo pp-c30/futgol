@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { PagosService } from "../../services/pagos.service";
 
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Form, Validators} from "@angular/forms";
 import { Ipago } from 'src/app/models/pago';
 
 @Component({
@@ -21,13 +21,12 @@ export class PagosComponent implements OnInit {
 
     this.formPago = this.fb.group({
       id_pagos:[null],
-      id_socio:[''],
-      fecha_pago:[''],
-      cuota:[''],
-      periodo_mes:[''],
-      periodo_anio:['']
-
-    });
+      id_socio:['',[Validators.required,Validators.minLength(1)]],
+      fecha_pago:['',[Validators.required]],
+      cuota:['',[Validators.required]],
+      periodo_mes:['',[Validators.required]],
+      periodo_anio:['',[Validators.required]]
+     });
 
   }
 
