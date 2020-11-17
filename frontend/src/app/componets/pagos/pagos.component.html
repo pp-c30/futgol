@@ -27,7 +27,7 @@
             </thead>
 
             <tbody>
-                <tr *ngFor="let pago of listPagos | filter:buscarPago">
+                <tr *ngFor="let pago of listPagos | filter:buscarPago | paginate:{itemsPerPage:3,currentPage:p}">
                     <td>{{pago.id_pagos}}</td>
                     <td>{{pago.id_socio}}</td>
                     <td>{{pago.fecha_pago}}</td>
@@ -42,8 +42,12 @@
                     </td>
                 </tr>
             </tbody>
-
-        </table>
+         </table>
+         <div class="row">
+             <div class="col-sm5">
+                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
+             </div>
+         </div>
 
     </div>
 
