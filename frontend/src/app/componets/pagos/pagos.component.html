@@ -35,7 +35,7 @@
             <div class="card-headre"> Formulario de pagos</div>
             <div class="card-body">
 
-                <form [Formogrup]="formPago" (ngSubmit)="guardarPago()">
+                <form [formGroup]="formPago" (ngSubmit)="guardarPago()">
                     <div class="form-group">
                         <input formControlName="id_socio " placeholder="Ingrese ID socio" type="text" class="form-control">
                     </div>
