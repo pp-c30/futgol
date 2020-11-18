@@ -58,15 +58,8 @@
             <div class="card-body">
 
                 <form [formGroup]="formPago" (ngSubmit)="guardarPago()" novalidate>
-                    <input formControlName="id_pagos" type="hidden">
+                    <input formControlName="id_socio" type="hidden">
 
-                    <div class="form-group">
-                        <input [ngClass]="{'is-invalid':(formPago.get('id_socio')?.touched || formPago.get('id_socio')?.dirty) && formPago.get('id_socio')?.invalid}" formControlName="id_socio" placeholder="Ingrese ID socio" type="text" class="form-control">
-                        <div class="invalid-feedback">
-                            <span *ngIf="formPago.get('id_socio').hasError('required')">Campo requerido </span>
-                            <span *ngIf="!formPago.get('id_socio').hasError('minLength')">Minimo 1 careacter</span>
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <input [ngClass]="{'is-invalid':(formPago.get('fecha_pago')?.touched || formPago.get('fecha_pago')?.dirty) && formPago.get('fecha_pago')?.invalid}" formControlName="fecha_pago" placeholder="Fecha de pago" type="text" class="form-control">
@@ -83,20 +76,20 @@
                     </div>
 
                     <div class="form-group">
-                        <select class="form-control">
+                        <select formControlName="periodo_mes" class="form-control">
                             <option value="0" disabled selected>Selecionar mes</option>
-                            <option value="">Enero</option>
-                            <option value="">Febrero</option>
-                            <option value="">Marzo</option>
-                            <option value="">Abril</option>
-                            <option value="">Mayo</option>
-                            <option value="">Julio</option>
-                            <option value="">Junio</option>
-                            <option value="">Agosto</option>
-                            <option value="">Septiembre</option>
-                            <option value="">Octubre</option>
-                            <option value="">Noviembre</option>
-                            <option value="">Diciembre</option>
+                            <option value="enero">Enero</option>
+                            <option value="febrero">Febrero</option>
+                            <option value="marzo">Marzo</option>
+                            <option value="abril">Abril</option>
+                            <option value="mayo">Mayo</option>
+                            <option value="julio">Julio</option>
+                            <option value="junio">Junio</option>
+                            <option value="agosto">Agosto</option>
+                            <option value="septiembre">Septiembre</option>
+                            <option value="octubre">Octubre</option>
+                            <option value="noviembre">Noviembre</option>
+                            <option value="diciembre">Diciembre</option>
                         </select>
                     </div>
 

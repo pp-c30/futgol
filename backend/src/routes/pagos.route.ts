@@ -6,7 +6,7 @@ let pagosController = new PagosController();
 
 const enrutadorPagos = Router();
 
-enrutadorPagos.route('/pagos').get(pagosController.listarPagos);
+enrutadorPagos.route('/pagos/:id_socio').get(pagosController.listarPagos);
 enrutadorPagos.route('/pagos').post(pagosController.guardarpagos);
 enrutadorPagos.route('/pagos/:codigo_pagos').delete(pagosController.eleminarPagos);
 enrutadorPagos.route('/pagos/:codigo_pagos').put(pagosController.actualizarPagos);

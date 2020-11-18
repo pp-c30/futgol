@@ -15,9 +15,10 @@ class PagosController {
     //listado de pago 
     listarPagos(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            let socio = req.params.id_socio;
             //se logra la connexion con la base de datos 
             const db = yield database_1.conexion();
-            let pagos = yield db.query('select * from pagos');
+            let pagos = yield db.query("select *, date_format(fecha_pago,'%d/%m/%Y') as fecha_pago from pagos where id_socio = ?", [socio]);
             return res.json(pagos);
         });
     }

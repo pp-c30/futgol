@@ -12,9 +12,9 @@ export class PagosService {
 
   }
 
-  getpagos()
+  getpagos(id_socio:number)
   {
-   return this.http.get<Ipago[]>('http://localhost:3020/pagos');
+   return this.http.get<Ipago[]>('http://localhost:3020/pagos/'+id_socio);
   }
 
 

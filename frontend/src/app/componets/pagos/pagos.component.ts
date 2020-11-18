@@ -4,6 +4,7 @@ import { PagosService } from "../../services/pagos.service";
 
 import { FormBuilder, FormGroup, Form, Validators} from "@angular/forms";
 import { Ipago } from 'src/app/models/pago';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-pagos',
@@ -21,26 +22,33 @@ export class PagosComponent implements OnInit {
 
   p:number = 1;
 
-  constructor(private pagosServ:PagosService, private fb:FormBuilder) { 
+  id_socio:number;
+
+  constructor(private pagosServ:PagosService, private fb:FormBuilder, private activate:ActivatedRoute) { 
 
     this.formPago = this.fb.group({
       id_pagos:[null],
       id_socio:['',[Validators.required,Validators.minLength(1)]],
       fecha_pago:['',[Validators.required]],
       cuota:['',[Validators.required]],
-      periodo_mes:[''],
+      periodo_mes:[0],
       periodo_anio:['',[Validators.required]],
      });
-
+     this.activate.params.subscribe(
+       params =>{
+        this.id_socio = params.id_socio
+       }
+     );
   }
 
   ngOnInit(): void {
     this.obtenerPagos();
+    this.formPago.get('id_socio').setValue(this.id_socio);
   } 
 
   obtenerPagos()
   {
-    this.pagosServ.getpagos().subscribe(
+    this.pagosServ.getpagos(this.id_socio).subscribe(
       resultado => this.listPagos = resultado,
       error => console.log(error)
     )

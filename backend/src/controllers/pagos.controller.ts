@@ -9,10 +9,12 @@ export class PagosController
     //listado de pago 
     public async listarPagos(req:Request, res:Response)
     {
-          //se logra la connexion con la base de datos 
-          const db = await conexion();
+        let socio = req.params.id_socio;
+        //se logra la connexion con la base de datos 
+         
+        const db = await conexion();
 
-          let pagos = await db.query('select * from pagos');
+          let pagos = await db.query("select *, date_format(fecha_pago,'%d/%m/%Y') as fecha_pago from pagos where id_socio = ?",[socio]);
   
           return res.json(pagos);
   
