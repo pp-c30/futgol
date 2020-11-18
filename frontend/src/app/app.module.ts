@@ -8,11 +8,13 @@ import { PagosComponent } from './componets/pagos/pagos.component';
 import { HttpClientModule } from "@angular/common/http";
 
 import { ReactiveFormsModule } from "@angular/forms";
+import { SocioComponent } from './components/socio/socio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PagosComponent
+    PagosComponent,
+    SocioComponent
   ],
   imports: [
     BrowserModule,
