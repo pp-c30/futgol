@@ -14,24 +14,24 @@ export class PagosService {
 
   getpagos(id_socio:number)
   {
-   return this.http.get<Ipago[]>('http://localhost:3020/pagos/'+id_socio);
+   return this.http.get<Ipago[]>('http://localhost:3030/pagos/'+id_socio);
   }
 
 
   savePago(unPago:Ipago)
   {
-   return this.http.post('http://localhost:3020/pagos',unPago);
+   return this.http.post('http://localhost:3030/pagos',unPago);
   }
 
   updatePago(unPago:Ipago)
   {
     let id:number = unPago.id_pagos;
-    return this.http.put('http://localhost:3020/pagos/'+id,unPago);
+    return this.http.put('http://localhost:3030/pagos/'+id,unPago);
   }
 
   deletePago(id:number)
   {
-    return this.http.delete('http://localhost:3020/pagos/'+id);
+    return this.http.delete('http://localhost:3030/pagos/'+id);
   }
 
 
