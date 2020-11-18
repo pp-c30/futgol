@@ -2,57 +2,112 @@
 
 
     <div class="col-sm-8">
-        
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input placeholder="ingrese criterio de busqueda" [(ngModel)]="buscarPago" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+       
         <table class="table table-striped">
 
             <thead>
                 <tr>
-                    <th>id del socio</th>
-                    <th>fecha de pago</th>
-                    <th>cuota</th>
-                    <th>periodo del mes</th>
-                    <th>periodo del año</th>
+                    <th>ID</th>
+                    <th>Id del socio</th>
+                    <th>Fecha de pago</th>
+                    <th>Cuota</th>
+                    <th>Periodo del mes</th>
+                    <th>Periodo del año</th>
+                    <th>Operaciones</th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr *ngFor="let pago of listpagos">
+                <tr *ngFor="let pago of listPagos | filter:buscarPago | paginate:{itemsPerPage:3,currentPage:p}">
+                    <td>{{pago.id_pagos}}</td>
                     <td>{{pago.id_socio}}</td>
                     <td>{{pago.fecha_pago}}</td>
                     <td>{{pago.cuota}}</td>
-                    <td>{{pago.periodo_mes}</td>
+                    <td>{{pago.periodo_mes}}</td>
                     <td>{{pago.periodo_anio}}</td>
+                    <td> 
+                        <div class="btn-group btn-group-sm">
+                            <button (click)="eliminarPago(pago.id_pagos);" class="btn btn-danger">Eliminar</button>
+                            <button (click)="editarPago(pago)" class="btn btn-primary">editar</button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
-
-        </table>
+         </table>
+         <div class="row">
+             <div class="col-sm5">
+                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
+             </div>
+         </div>
 
     </div>
 
-    <div class="col-sim-4">
+    <div class="col-sm-4">
 
         <div class="card">
-            <div class="card-headre"> Formulario de pagos</div>
+            <div class="card-header"> Formulario de pagos</div>
             <div class="card-body">
 
+<<<<<<< HEAD
                 <form [formGroup]="formPago" (ngSubmit)="guardarPago()">
+=======
+                <form [formGroup]="formPago" (ngSubmit)="guardarPago()" novalidate>
+                    <input formControlName="id_socio" type="hidden">
+
+
+>>>>>>> da419cd959f3abd951808c2ea096614d74ec526c
                     <div class="form-group">
-                        <input formControlName="id_socio " placeholder="Ingrese ID socio" type="text" class="form-control">
-                    </div>
-                    <div class="from-group">
-                        <input formControlName="fecha_pago" placeholder="Fecha de pago" type="text" class="form-control">
-                    </div>   
-                    <div class="from-group">
-                        <input formControlName="cuota" placeholder="Ingrese la cuota" type="text" class="form-control">
-                    </div>
-                    <div class="from-group">
-                        <input formControlName="periodo_mes placeholder="Ingrese el periodo del mes" type="text" class="form-control">
-                    </div>
-                    <div class="from-group">
-                        <input formControlName="periodo_anio" placeholder="Ingrese el periodo del año" type="text" class="form-control">
+                        <div class="input-group">
+                            <input formControlName="fecha_pago" class="form-control" placeholder="ingrese fecha"
+                                   name="dp" ngbDatepicker #d="ngbDatepicker">
+                            <div class="input-group-append">
+                              <button class="btn btn-primary calendar" (click)="d.toggle()" type="button"></button>
+                            </div>
+                          </div>
+                    </div>  
+
+                    <div class="form-group">
+                        <input [ngClass]="{'is-invalid':(formPago.get('cuota')?.touched || formPago.get('cuota')?.dirty) && formPago.get('cuota')?.invalid}" formControlName="cuota" placeholder="Ingrese la cuota" type="text" class="form-control">
+                        <div class="invalid-feedback">
+                            <span *ngIf="formPago.get('cuota').hasError('required')">Campo requerido </span>
+                        </div>
                     </div>
 
-                    <button class="btn btn-success">guardar pago</button>
+                    <div class="form-group">
+                        <select formControlName="periodo_mes" class="form-control">
+                            <option value="0" disabled selected>Selecionar mes</option>
+                            <option value="enero">Enero</option>
+                            <option value="febrero">Febrero</option>
+                            <option value="marzo">Marzo</option>
+                            <option value="abril">Abril</option>
+                            <option value="mayo">Mayo</option>
+                            <option value="julio">Julio</option>
+                            <option value="junio">Junio</option>
+                            <option value="agosto">Agosto</option>
+                            <option value="septiembre">Septiembre</option>
+                            <option value="octubre">Octubre</option>
+                            <option value="noviembre">Noviembre</option>
+                            <option value="diciembre">Diciembre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input [ngClass]="{'is-invalid':(formPago.get('periodo_anio')?.touched || formPago.get('periodo_anio')?.dirty) && formPago.get('periodo_anio')?.invalid}" formControlName="periodo_anio" placeholder="Ingrese año" type="text" class="form-control">
+                        <div class="invalid-feedback">
+                            <span *ngIf="formPago.get('periodo_anio').hasError('required')">Campo requerido </span>
+                        </div>
+                    </div>
+
+                    <button [disabled]="formPago.invalid" class="btn btn-success">guardar pago</button>
                 </form>
 
             </div>
