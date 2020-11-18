@@ -28,8 +28,8 @@ export class PagosComponent implements OnInit {
       id_socio:['',[Validators.required,Validators.minLength(1)]],
       fecha_pago:['',[Validators.required]],
       cuota:['',[Validators.required]],
-      periodo_mes:['',[Validators.required]],
-      periodo_anio:['',[Validators.required]]
+      periodo_mes:[''],
+      periodo_anio:['',[Validators.required]],
      });
 
   }

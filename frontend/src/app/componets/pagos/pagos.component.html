@@ -83,14 +83,25 @@
                     </div>
 
                     <div class="form-group">
-                        <input [ngClass]="{'is-invalid':(formPago.get('periodo_mes')?.touched || formPago.get('periodo_mes')?.dirty) && formPago.get('periodo_mes')?.invalid}" formControlName="periodo_mes" placeholder="Ingrese el periodo del mes" type="text" class="form-control">
-                        <div class="invalid-feedback">
-                            <span *ngIf="formPago.get('periodo_mes').hasError('required')">Campo requerido </span>
-                        </div>
+                        <select class="form-control">
+                            <option value="0" disabled selected>Selecionar mes</option>
+                            <option value="">Enero</option>
+                            <option value="">Febrero</option>
+                            <option value="">Marzo</option>
+                            <option value="">Abril</option>
+                            <option value="">Mayo</option>
+                            <option value="">Julio</option>
+                            <option value="">Junio</option>
+                            <option value="">Agosto</option>
+                            <option value="">Septiembre</option>
+                            <option value="">Octubre</option>
+                            <option value="">Noviembre</option>
+                            <option value="">Diciembre</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
-                        <input [ngClass]="{'is-invalid':(formPago.get('periodo_anio')?.touched || formPago.get('periodo_anio')?.dirty) && formPago.get('periodo_anio')?.invalid}" formControlName="periodo_anio" placeholder="Ingrese el periodo del año" type="text" class="form-control">
+                        <input [ngClass]="{'is-invalid':(formPago.get('periodo_anio')?.touched || formPago.get('periodo_anio')?.dirty) && formPago.get('periodo_anio')?.invalid}" formControlName="periodo_anio" placeholder="Ingrese año" type="text" class="form-control">
                         <div class="invalid-feedback">
                             <span *ngIf="formPago.get('periodo_anio').hasError('required')">Campo requerido </span>
                         </div>
