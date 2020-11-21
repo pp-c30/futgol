@@ -15,6 +15,8 @@ import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { NgxPaginationModule } from "ngx-pagination";
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GaleriaComponent } from './components/galeria/galeria.component';
+import { AsistenciaComponent } from './components/asistencia/asistencia.component';
 
 
 
@@ -23,7 +25,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     PagosComponent,
-    SocioComponent
+    SocioComponent,
+    GaleriaComponent,
+    AsistenciaComponent
   ],
   imports: [
     BrowserModule,
