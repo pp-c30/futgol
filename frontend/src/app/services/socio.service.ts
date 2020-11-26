@@ -18,7 +18,7 @@ export class SocioService {
 
    saveSocio(unSocio:ISocio){
 
-    return this.http.post('http://localhost:3030',unSocio);
+    return this.http.post('http://localhost:3030/socios',unSocio);
     
    }
 }
