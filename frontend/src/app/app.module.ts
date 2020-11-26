@@ -15,6 +15,10 @@ import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { NgxPaginationModule } from "ngx-pagination";
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HorariosComponent } from './components/horarios/horarios.component';
+import { encuentroscomponent } from './components/encuentros/encuentros.component';
+import { EncuentrosService } from './services/encuentros.service';
+
 
 
 
@@ -23,7 +27,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     PagosComponent,
-    SocioComponent
+    SocioComponent,
+    HorariosComponent,
+    encuentroscomponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     Ng2SearchPipeModule,
     NgxPaginationModule,
     FormsModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
