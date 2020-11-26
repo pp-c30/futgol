@@ -15,8 +15,15 @@ import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { NgxPaginationModule } from "ngx-pagination";
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+<<<<<<< HEAD
+import { HorariosComponent } from './components/horarios/horarios.component';
+import { encuentroscomponent } from './components/encuentros/encuentros.component';
+import { EncuentrosService } from './services/encuentros.service';
+
+=======
 import { GaleriaComponent } from './components/galeria/galeria.component';
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
+>>>>>>> 45cc7dd0f792deef7b0b1a1a9ec053b18190e4ce
 
 
 
@@ -26,8 +33,13 @@ import { AsistenciaComponent } from './components/asistencia/asistencia.componen
     AppComponent,
     PagosComponent,
     SocioComponent,
+<<<<<<< HEAD
+    HorariosComponent,
+    encuentroscomponent,
+=======
     GaleriaComponent,
     AsistenciaComponent
+>>>>>>> 45cc7dd0f792deef7b0b1a1a9ec053b18190e4ce
   ],
   imports: [
     BrowserModule,
@@ -37,7 +49,7 @@ import { AsistenciaComponent } from './components/asistencia/asistencia.componen
     Ng2SearchPipeModule,
     NgxPaginationModule,
     FormsModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
