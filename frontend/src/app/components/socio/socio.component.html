@@ -49,8 +49,8 @@
                     <td>{{socio.fecha_nacimiento}</td>}
                     <td>
                         <div class="btn group btn-group-sm">
-                            <button class="btn btn.danger">Eliminar</button>
-                            <button class="btn btn.primary">Editar</button>
+                            <button (click)="eliminarSocio(socio.id_socio);" class="btn btn.danger">Eliminar</button>
+                            <button (click)="editarSocio(socio)" class="btn btn.primary">Editar</button>
                         </div>
                     </td>
                 </tr>
@@ -71,6 +71,9 @@
             <div class="card-body">
 
                 <form [formGroup]="formSocio" (ngSubmit)="guardarSocio()" novalidate>
+
+                    <input formCotrolName="id_socio" type="hidden">
+
                     <input formControlName="nombre" type="hidden">
 
                   

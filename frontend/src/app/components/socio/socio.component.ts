@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SocioService } from "../../services/socio.service";
 
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { ISocio } from 'src/app/models/socio';
 
 @Component({
   selector: 'app-socio',
@@ -55,20 +56,59 @@ export class SocioComponent implements OnInit {
 
   guardarSocio(){
 
-    //console.log(this.formSocio.value);
+    if(this.formSocio.value.id_socio)
+    {
+          //se actualiza
 
-    this.socioServ.saveSocio(this.formSocio.value).subscribe(
-      resultado => {
-        console.log(resultado);
-        //se refresca la grilla
-        this.listaSocio();
-        this.formSocio.reset();
-      },
-      error => console.log(error)
-      
-    );
+       this.socioServ.updateSocio(this.formSocio.value).subscribe(
+         respuesta => {
+           console.log(respuesta);
+           this.listaSocio();
+           this.formSocio.reset();
+         },
+         error => console.log(error)
+       )
+    }else {
+      this.socioServ.saveSocio(this.formSocio.value).subscribe(
+        resultado => {
+          console.log(resultado);
+          //se refresca la grilla
+          this.listaSocio();
+          this.formSocio.reset();
+        },
+        error => console.log(error)
+        
+      );
+
+    }
+
+
+
+   
 
   }
+
+  editarSocio(socio:ISocio)
+    {
+    this.formSocio.setValue(socio);
+    }
+
+   eliminarSocio(id:number)
+   {
+     if(confirm('Esta seguro que desea eliminar un socio?')){
+
+      this.socioServ.deleteSocio(id).subscribe(
+        respuesta => {
+          console.log(respuesta);
+          this.listaSocio();
+ 
+        },
+        error => console.log(error)
+      );
+     }
+     
+   } 
+  
 
 
 

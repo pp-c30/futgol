@@ -21,4 +21,16 @@ export class SocioService {
     return this.http.post('http://localhost:3030/socios',unSocio);
     
    }
+
+   updateSocio(unSocio:ISocio)
+   {
+      let id:number = unSocio.id_socio;
+     return this.http.put('http://localhost:3030/socios/'+id,unSocio);
+
+   }
+
+   deleteSocio(id:number){
+     return this.http.delete('http://localhost:3030/socios/'+id);
+
+   }
 }
