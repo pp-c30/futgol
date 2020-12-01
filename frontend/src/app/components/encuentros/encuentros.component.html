@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-sm-8">
             <table class="table table-striper">
+                <thead>
                     <tr>
                         <th>Id</th>
                         <th>Titulo</th> 
@@ -9,11 +10,10 @@
                         <th>Ubicacion</th>  
                         <th>Categoria</th>  
                         <th>Estado</th>  
-                        <th>Operaciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let pago of listpagos">
+                    <tr *ngFor="let encuentro of listencuentros">
                         <td>{{encuentro.id_encuentro_partidos}}</td>
                         <td>{{encuentro.titulo}}</td>
                         <td>{{encuentro.descripcion}}</td>
@@ -23,8 +23,8 @@
                         <td>{{encuentro.estado}}</td>
                         <td>
                             <div class="btn-group btn-group-sm">
-                                <button class="btn btn-danger">Eliminar</button>
-                                <button (click)="editarencuentro(pago)" class="btn btn-primary">Editar</button>
+                                <button (click)="eliminarencuentro(encuentro.id_encuentro_partidos)" class="btn btn-danger">Eliminar</button>
+                                <button (click)="editarencuentro(encuentro)" class="btn btn-primary">Editar</button>
                             </div>
                         </td>
                     </tr>
@@ -39,22 +39,22 @@
             <div class="card body">
                 <form [formGroup]="formEncuentros" (ngSubmit)="guardarencuentros()">
 
-                    <input formControlName="id_encuentro_partidos" type="text">
+                    <input formControlName="id_encuentro_partidos" type="hidden">
 
-                    <div class="form group"></div>
+                    <div class="form group">
                         <input formControlName="Titulo" placeholder="Ingrese el Titulo" type="string" class="form-control">
                     </div>
                     <div class="form group">
-                        <input formControlName="Descripcion" placeholder="Ingrese el Descripcion" type="text" class="form-control">
+                        <input formControlName="Descripcion" placeholder="Ingrese la Descripcion" type="text" class="form-control">
                     </div>
                     <div class="form group">
-                        <input formControlName="fecha_hora" placeholder="Ingrese el Fecha y Hora" type="date" class="form-control">
+                        <input formControlName="fecha_hora" placeholder="Ingrese la Fecha y Hora" type="date" class="form-control">
                     </div>
                     <div class="form group">
-                        <input formControlName="ubicacion" placeholder="Ingrese el Ubicacion" type="text" class="form-control">
+                        <input formControlName="ubicacion" placeholder="Ingrese la Ubicacion" type="text" class="form-control">
                     </div>
                     <div class="form group">
-                        <input formControlName="categoria" placeholder="Ingrese el Categoria" type="number" class="form-control">
+                        <input formControlName="categoria" placeholder="Ingrese la Categoria" type="number" class="form-control">
                     </div>
                     <div class="form group">
                         <input formControlName="estado" placeholder="Ingrese el Estado" type="number" class="form-control">

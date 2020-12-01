@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { EncuentrosService } from "../../services/encuentros.service";
 
 import {FormBuilder, FormGroup } from "@angular/forms";
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+
 import { iencuentros } from 'src/app/models/encuentros';
 
 @Component({
@@ -11,7 +11,7 @@ import { iencuentros } from 'src/app/models/encuentros';
   templateUrl: './encuentros.component.html',
   styleUrls: ['encuentros.component.css']
 })
-export class encuentroscomponent implements OnInit {
+export class EncuentrosComponent implements OnInit {
 
   listencuentros =[];
 
@@ -48,11 +48,27 @@ export class encuentroscomponent implements OnInit {
 guardarencuentros()
 {
 
-  if(this.formEncuentros.value.id_encuentro_partidos )
+  if(this.formEncuentros.value.id_encuentro_partidos)
   {
-
+    //si existe el id, se actualiza
+    this.encuentroServ.updateencuentros(this.formEncuentros.value).subscribe(
+      respuesta => {
+          console.log(respuesta);
+          this.obtenerencuentros();
+          this.formEncuentros.reset();
+      },
+      error => console.log(error)
+    )
   }else{
+    this.encuentroServ.saveencuentros(this.formEncuentros.value).subscribe(
+      resultado => {
+          console.log(resultado);
 
+          this.obtenerencuentros();
+          this.formEncuentros.reset();
+      },
+      error => console.log(error)
+    );
   }
 
  
@@ -61,9 +77,23 @@ guardarencuentros()
 
 editarencuentro(encuentros:iencuentros)
 {
-  this.formEncuentros.setValue(encuentros);{}
+  this.formEncuentros.setValue(encuentros);
+}
 
-  
+eliminarencuentro(id:number)
+{
+
+  if(confirm('Estas seguro que deseas ejecutar esta accion?')){
+    this.encuentroServ.deleteencuentros(id).subscribe(
+      respuesta => {
+        console.log(respuesta);
+        this.obtenerencuentros();
+      },
+      error => console.log(error)
+    );
+  }
+
+
 }
 
 }
