@@ -15,6 +15,7 @@ export class SocioComponent implements OnInit {
   listSocio = [];
   formSocio: FormGroup;
   p:number = 1;
+  buscarSocio:any;
 
   constructor(private socioServ:SocioService,private fb: FormBuilder) { 
 
