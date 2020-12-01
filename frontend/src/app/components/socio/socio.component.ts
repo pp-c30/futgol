@@ -13,6 +13,7 @@ export class SocioComponent implements OnInit {
 
   listSocio = [];
   formSocio: FormGroup;
+  p:number = 1;
 
   constructor(private socioServ:SocioService,private fb: FormBuilder) { 
 
@@ -54,6 +55,18 @@ export class SocioComponent implements OnInit {
 
   guardarSocio(){
 
+    //console.log(this.formSocio.value);
+
+    this.socioServ.saveSocio(this.formSocio.value).subscribe(
+      resultado => {
+        console.log(resultado);
+        //se refresca la grilla
+        this.listaSocio();
+        this.formSocio.reset();
+      },
+      error => console.log(error)
+      
+    );
 
   }
 
