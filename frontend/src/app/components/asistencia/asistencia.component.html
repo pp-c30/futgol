@@ -1,1 +1,98 @@
-<p>asistencia works!</p>
+<div class="row">
+
+
+    <div class="col-sm-9">
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input placeholder="ingrese criterio de busqueda" [(ngModel)]="buscarAsistencia" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+       
+        <table class="table table-striped">
+
+            <thead>
+                <tr>
+                    <th>id_asistencia</th>
+                    <th>id_socio</th>
+                    <th>fecha_asistencia</th>
+                    <th>asistencia</th>
+                    <th>categoria</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let asistencia of listAsistencia | filter:buscarAsistencia | paginate:{itemsPerPage:3,currentPage:p}">
+                    <td>{{asistencia.id_asistencia}}</td>
+                    <td>{{asistencia.id_socio}}</td>
+                    <td>{{asistencia.fecha_asistencia}</td>
+                    <td>{{asistencia.asistencia}}</td>
+                    <td>{{asistencia.categoria}}</td>
+                    <td>
+                        <div class="btn group btn-group-sm">
+                            <button (click)="eliminarAsistencia(asistencia.id_asistencia);" class="btn btn.danger">Eliminar</button>
+                            <button (click)="editarAsistencia(asistencia)" class="btn btn.primary">Editar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+         </table>
+         <div class="row">
+             <div class="col-sm-5">
+                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
+             </div>
+         </div>
+
+    </div>
+
+    <div class="col-sm-3">
+
+        <div class="card">
+            <div class="card-header"> Formulario de asistencia </div>
+            <div class="card-body">
+
+                <form [formGroup]="formAsistencia" (ngSubmit)="guardarAsistencia()" novalidate>
+
+                    <input formCotrolName="id_asistencia" type="hidden">
+
+                    <input formControlName="id_socio" type="hidden">
+
+                  
+                    <div class="form-group">
+                        <input formControlName="id_asistencia" type="text" placeholder="ingrese asistencia" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input formControlName="id_socio" type="text" placeholder="ingrese socio" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input formControlName="fecha_asistencia" type="number" placeholder="ingrese fecha de asistencia" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input formControlName="asistencia" type="text" placeholder="ingrese la asistencia" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input formControlName="categoria" type="text" placeholder="ingrese la categoria" class="form-control">
+                    </div>
+
+
+                    <button class="btn btn-succes">Guardar la asistencia</button>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
