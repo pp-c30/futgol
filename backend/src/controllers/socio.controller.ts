@@ -15,7 +15,7 @@ export class SocioController
         const db = await conexion();
 
         //consulta a la base
-        let socio = await db.query('select * from socio');
+        let socio = await db.query('select *,date_format(fecha_nacimiento,"%d-%m-%Y") as fecha_nacimiento, date_format(fecha_alta,"%d-%m-%Y") as fecha_alta ,date_format(fecha_nacimiento,"%d") as day, date_format(fecha_nacimiento,"%m") as month, date_format(fecha_nacimiento,"%Y") as year from socio');
 
 
         return res.json(socio);
@@ -29,7 +29,7 @@ export class SocioController
     {
 
         const db = await conexion();
-
+        req.body.fecha_nacimiento = req.body.fecha_nacimiento.year+'-'+ req.body.fecha_nacimiento.month+'-'+ req.body.fecha_nacimiento.day;
         let socio:Isocio = req.body;
 
         await db.query('insert into socio set ?',[socio]);

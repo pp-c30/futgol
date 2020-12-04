@@ -1,7 +1,12 @@
 <div class="row">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Nuevo socio
+      </button>
+</div>
+<div class="row">
 
 
-    <div class="col-sm-9">
+    <div class="col-sm-12">
 
         <div class="row">
             <div class="col-sm-4">
@@ -41,16 +46,28 @@
                     <td>{{socio.dni}}</td>
                     <td>{{socio.celular_tutor}}</td>
                     <td>{{socio.domicilio}}</td>
-                    <td>{{socio.categoria}</td>
-                    <td>{{socio.enfermedad}}</td>
-                    <td>{{socio.estado}}</td>
-                    <td>{{socio.sexo}}</td>
-                    <td>{{socio.fecha_alta}}</td>
-                    <td>{{socio.fecha_nacimiento}</td>}
+                    <td>{{socio.categoria}}</td>
                     <td>
-                        <div class="btn group btn-group-sm">
+                        
+
+                    </td>
+                    <td>{{socio.estado}}</td>
+                    <td>
+                        <div *ngIf="socio.sexo==0; else loggedOut">
+                            Femenino
+                          </div>
+                          
+                          <ng-template #loggedOut>
+                            Masculino
+                          </ng-template>
+
+                    </td>
+                    <td>{{socio.fecha_alta}}</td>
+                    <td>{{socio.fecha_nacimiento}}</td>
+                    <td>
+                        <div class=" btn-group-sm">
                             <button (click)="eliminarSocio(socio.id_socio);" class="btn btn.danger">Eliminar</button>
-                            <button (click)="editarSocio(socio)" class="btn btn.primary">Editar</button>
+                            <button (click)="editarSocio(socio)" class="btn btn.primary" data-toggle="modal" data-target="#exampleModal">Editar</button>
                         </div>
                     </td>
                 </tr>
@@ -64,66 +81,86 @@
 
     </div>
 
-    <div class="col-sm-3">
-
-        <div class="card">
-            <div class="card-header"> Formulario de socio</div>
-            <div class="card-body">
-
-                <form [formGroup]="formSocio" (ngSubmit)="guardarSocio()" novalidate>
-
-                    <input formCotrolName="id_socio" type="hidden">
-
-                    <input formControlName="nombre" type="hidden">
-
-                  
-                    <div class="form-group">
-                        <input formControlName="nombre" type="text" placeholder="ingrese nombre" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <input formControlName="apellido" type="text" placeholder="ingrese apellido" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <input formControlName="dni" type="number" placeholder="ingrese dni" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <input formControlName="celular_tutor" type="text" placeholder="ingrese celular de tutor" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <input formControlName="domicilio" type="text" placeholder="ingrese domicilio" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <input formControlName="categoria" type="number" placeholder="ingrese categoria" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <input formControlName="enfermedad" type="text" placeholder="ingrese enfermedad" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <input formControlName="sexo" type="number" placeholder="ingrese sexo" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <input formControlName="fecha_nacimiento" type="number" placeholder="ingrese fecha de nacimiento" class="form-control">
-                    </div>
-
-
-                    <button class="btn btn-succes">Guardar un socio</button>
-
-
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
 
 </div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="formSocio" (ngSubmit)="guardarSocio()" novalidate>
+        <div class="modal-body">
+           
+                <input formCotrolName="id_socio" type="hidden">
+
+                <input formControlName="nombre" type="hidden">
+
+              
+                <div class="form-group">
+                    <input formControlName="nombre" type="text" placeholder="ingrese nombre" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input formControlName="apellido" type="text" placeholder="ingrese apellido" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input formControlName="dni" type="number" placeholder="ingrese dni" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input formControlName="celular_tutor" type="text" placeholder="ingrese celular de tutor" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input formControlName="domicilio" type="text" placeholder="ingrese domicilio" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input formControlName="categoria" type="number" placeholder="ingrese categoria" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <select formControlName="enfermedad" class="form-control" id="">
+                        <option value="2" disabled selected>Presenta enfermedad?</option>
+                        <option value="0">si</option>
+                        <option value="1">no</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <select formControlName="sexo" class="form-control" id="">
+                        <option value="2" disabled selected>Seleccione el sexo</option>
+                        <option value="0">Femenino</option>
+                        <option value="1">Masculino</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <input formControlName="fecha_nacimiento" class="form-control" placeholder="ingrese fecha"
+                               name="dp" ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-append">
+                          <button class="btn btn-primary calendar" (click)="d.toggle()" type="button"></button>
+                        </div>
+                      </div>
+                </div> 
+
+
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button class="btn btn-succes">Guardar un socio</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
 

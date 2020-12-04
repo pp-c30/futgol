@@ -31,6 +31,8 @@ export class AsistenciaComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    this.listaAsistencia();
   }
 
   listaAsistencia(){

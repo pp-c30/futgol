@@ -13,7 +13,7 @@ export class SocioService {
    }
    getSocio()
    {
-    return this.http.get<ISocio[]>('http://localhost:3030/socio');
+    return this.http.get<ISocio[]>('http://localhost:3030/socios');
    }
 
    saveSocio(unSocio:ISocio){

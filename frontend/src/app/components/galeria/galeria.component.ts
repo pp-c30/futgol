@@ -30,6 +30,7 @@ export class GaleriaComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.listaGaleria();
   }
 
   listaGaleria(){

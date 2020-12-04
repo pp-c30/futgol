@@ -12,7 +12,11 @@ export interface ISocio {
     estado:Text;
     sexo:Text;
     fecah_alta:number;
-    fecha_nacimiento:Date;
+    fecha_nacimiento:any;
+    day:number;
+    month:number;
+    year:number;
+
     
 
 }

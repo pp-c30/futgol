@@ -18,7 +18,7 @@ class SocioController {
             //aca se logra la conexion con la base de datos
             const db = yield database_1.conexion();
             //consulta a la base
-            let socio = yield db.query('select * from socio');
+            let socio = yield db.query('select *,date_format(fecha_nacimiento,"%d-%m-%Y") as fecha_nacimiento, date_format(fecha_alta,"%d-%m-%Y") as fecha_alta ,date_format(fecha_nacimiento,"%d") as day, date_format(fecha_nacimiento,"%m") as month, date_format(fecha_nacimiento,"%Y") as year from socio');
             return res.json(socio);
         });
     }
@@ -26,6 +26,7 @@ class SocioController {
     guardarSocio(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
+            req.body.fecha_nacimiento = req.body.fecha_nacimiento.year + '-' + req.body.fecha_nacimiento.month + '-' + req.body.fecha_nacimiento.day;
             let socio = req.body;
             yield db.query('insert into socio set ?', [socio]);
             return res.json('El socio fue guardado exitosamente');

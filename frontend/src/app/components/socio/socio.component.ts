@@ -28,11 +28,11 @@ export class SocioComponent implements OnInit {
       celular_tutor:[''],
       domicilio:[''],
       categoria:[null],
-      enfermedad:[''],
+      enfermedad:[2],
       detalle_enfermedad:[''],
       estado:[null],
-      sexo:[null],
-      fecha_alta:[''],
+      sexo:[2],
+      fecha_alta:[new Date()],
       fecha_nacimiento:[''],
       
 
@@ -42,6 +42,8 @@ export class SocioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.listaSocio();
+
   }
 
   listaSocio(){
@@ -91,6 +93,7 @@ export class SocioComponent implements OnInit {
 
   editarSocio(socio:ISocio)
     {
+      socio.fecha_nacimiento = {year:Number(socio.year),month:Number(socio.month),day:Number(socio.day)}
     this.formSocio.setValue(socio);
     }
 

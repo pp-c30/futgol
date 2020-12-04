@@ -6,10 +6,10 @@ let socioController = new SocioController();
 
 const enrutadorSocio = Router();
 
-enrutadorSocio.route('/socio').get(socioController.listarSocios);
-enrutadorSocio.route('/socio').post(socioController.guardarSocio);
-enrutadorSocio.route('/socio/:id').delete(socioController.eliminarSocio);
-enrutadorSocio.route('/socio/:id').put(socioController.actualizarSocio);
-enrutadorSocio.route('/socio').get(socioController.obtenerUnSocio);
+enrutadorSocio.route('/socios').get(socioController.listarSocios);
+enrutadorSocio.route('/socios').post(socioController.guardarSocio);
+enrutadorSocio.route('/socios/:id').delete(socioController.eliminarSocio);
+enrutadorSocio.route('/socios/:id').put(socioController.actualizarSocio);
+enrutadorSocio.route('/socios').get(socioController.obtenerUnSocio);
 
 export default enrutadorSocio;
