@@ -29,7 +29,7 @@
                 <tr *ngFor="let asistencia of listAsistencia | filter:buscarAsistencia | paginate:{itemsPerPage:3,currentPage:p}">
                     <td>{{asistencia.id_asistencia}}</td>
                     <td>{{asistencia.id_socio}}</td>
-                    <td>{{asistencia.fecha_asistencia}</td>
+                    <td>{{asistencia.fecha_asistencia}}</td>
                     <td>{{asistencia.asistencia}}</td>
                     <td>{{asistencia.categoria}}</td>
                     <td>
@@ -83,7 +83,7 @@
                     </div>
 
 
-                    <button class="btn btn-succes">Guardar la asistencia</button>
+                    <button class="btn btn-primary">Guardar la asistencia</button>
 
 
                 </form>
