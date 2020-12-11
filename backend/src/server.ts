@@ -20,6 +20,8 @@ import enrutadorHorarios from "./routes/horarios.route";
 
 import enrutadorCategoria from "./routes/categoria.route";
 
+import  enrutadorImagen  from "./routes/galeria.route";
+
 export class server {
 
     app:Application;
@@ -45,6 +47,7 @@ export class server {
         this.app.use(enrutadorAsistencia);
         this.app.use(enrutadorPagos);
         this.app.use(enrutadorGaleria);
+        this.app.use(enrutadorImagen);
         this.app.use(enrutadorSocio);
         this.app.use(enrutadorEncuentros);
         this.app.use(enrutadorHorarios);

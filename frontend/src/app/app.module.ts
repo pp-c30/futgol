@@ -21,6 +21,8 @@ import { EncuentrosService } from './services/encuentros.service';
 
 import { GaleriaComponent } from './components/galeria/galeria.component';
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
+import { AdmiImagenComponent } from './component/admi-imagen/admi-imagen.component';
+import { NavegacionComponent } from './components/navegacion/navegacion.component';
 
 
 
@@ -33,7 +35,9 @@ import { AsistenciaComponent } from './components/asistencia/asistencia.componen
     HorariosComponent,
     EncuentrosComponent,
     GaleriaComponent,
-    AsistenciaComponent
+    AsistenciaComponent,
+    AdmiImagenComponent,
+    NavegacionComponent
   ],
   imports: [
     BrowserModule,
