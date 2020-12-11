@@ -8,8 +8,8 @@ import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-pagos',
-  templateUrl: './pagos.component.html',
-  styleUrls: ['./pagos.component.css']
+  templateUrl: './pagos.components.html',
+  styleUrls: ['./pagos.components.css']
 })
 
 export class PagosComponent implements OnInit {
