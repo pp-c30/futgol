@@ -5,6 +5,7 @@ import { SocioComponent } from './components/socio/socio.component';
 import {EncuentrosComponent}  from  './components/encuentros/encuentros.component';
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
 import { GaleriaComponent } from './components/galeria/galeria.component';
+import { HorariosComponent } from './components/horarios/horarios.component';
 
 
 
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path:'galeria',
     component: GaleriaComponent
+  },
+  {
+    path:'horarios',
+    component: HorariosComponent
   }
 ];
 

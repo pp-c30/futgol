@@ -1,1 +1,85 @@
-<p>horarios works!</p>
+<div class="row">
+
+
+    <div class="col-sm-9">
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input placeholder="ingrese criterio de busqueda" [(ngModel)]="buscarhorarios" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+       
+        <table class="table table-striped">
+
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Fecha Y Hora</th>
+                    <th>Ubicacion</th>
+                    <th>Direccion</th>
+                    <th>Categoria</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let horario of listhorarios | filter:buscarhorarios | paginate:{itemsPerPage:3,currentPage:p}">
+                    <td>{{horario.id_horario_entrenamiento}}</td>
+                    <td>{{horario.fecha_hora}}</td>
+                    <td>{{horario.ubicacion}}</td>
+                    <td>{{horario.direccion}}</td>
+                    <td>{{horario.categoria}}</td>
+                    <td>
+                        <div class="btn group btn-group-sm">
+                            <button (click)="eliminarhorarios(horario.id_horario_entrenamiento);" class="btn btn.danger">Eliminar</button>
+                            <button (click)="editarhorarios(horario)" class="btn btn.primary">Editar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+         </table>
+         <div class="row">
+             <div class="col-sm-5">
+                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
+             </div>
+         </div>
+
+    </div>
+
+    <div class="col-sm-3">
+
+        <div class="card">
+            <div class="card-header"> Formulario De Horario De Entrenamiento</div>
+            <div class="card-body">
+
+                <form [formGroup]="formHorarios" (ngSubmit)="guardarhorarios()" novalidate>
+
+                    <input formCotrolName="id_horario_entrenamiento" type="hidden">
+
+                    <input formControlName="fecha_hora" type="hidden">
+
+                    <div class="form group">
+                        <input formControlName="fecha_hora" placeholder="Ingrese la Fecha y Hora" type="number" class="form-control">
+                    </div>
+                    <div class="form group">
+                        <input formControlName="ubicacion" placeholder="Ingrese la Ubicacion" type="text" class="form-control">
+                    </div>
+                    <div class="form group">
+                        <input formControlName="direccion" placeholder="Ingrese la Direccion" type="text" class="form-control">
+                    </div>
+                    <div class="form group">
+                        <input formControlName="categoria" placeholder="Ingrese la Categoria" type="number" class="form-control">
+                    </div>
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Guardar un Horario
+                      </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

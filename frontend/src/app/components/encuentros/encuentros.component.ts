@@ -16,6 +16,8 @@ export class EncuentrosComponent implements OnInit {
   listencuentros =[];
 
   formEncuentros: FormGroup;
+  p:number = 1;
+  buscarencuentros:any;
 
   constructor(private encuentroServ:EncuentrosService,private fb: FormBuilder) { 
 

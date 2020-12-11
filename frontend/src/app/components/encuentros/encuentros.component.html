@@ -1,45 +1,69 @@
 <div class="row">
-    <div class="col-sm-8">
-            <table class="table table-striper">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Titulo</th> 
-                        <th>Descripcion</th>  
-                        <th>Fecha y Hora</th>  
-                        <th>Ubicacion</th>  
-                        <th>Categoria</th>  
-                        <th>Estado</th>  
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let encuentro of listencuentros">
-                        <td>{{encuentro.id_encuentro_partidos}}</td>
-                        <td>{{encuentro.titulo}}</td>
-                        <td>{{encuentro.descripcion}}</td>
-                        <td>{{encuentro.fecha_hora}}</td>
-                        <td>{{encuentro.ubicacion}}</td>
-                        <td>{{encuentro.categoria}}</td>
-                        <td>{{encuentro.estado}}</td>
-                        <td>
-                            <div class="btn-group btn-group-sm">
-                                <button (click)="eliminarencuentro(encuentro.id_encuentro_partidos)" class="btn btn-danger">Eliminar</button>
-                                <button (click)="editarencuentro(encuentro)" class="btn btn-primary">Editar</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+
+    <div class="col-sm-9">
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input placeholder="ingrese criterio de busqueda" [(ngModel)]="buscarencuentros" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+       
+        <table class="table table-striped">
+
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titulo</th> 
+                    <th>Descripcion</th>  
+                    <th>Fecha y Hora</th>  
+                    <th>Ubicacion</th>  
+                    <th>Categoria</th>  
+                    <th>Estado</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let encuentro of listencuentros | filter:buscarencuentros | paginate:{itemsPerPage:3,currentPage:p}">
+                    <td>{{encuentro.id_encuentro_partidos}}</td>
+                    <td>{{encuentro.titulo}}</td>
+                    <td>{{encuentro.descripcion}}</td>
+                    <td>{{encuentro.fecha_hora}}</td>
+                    <td>{{encuentro.ubicacion}}</td>
+                    <td>{{encuentro.categoria}}</td>
+                    <td>{{encuentro.estado}}</td>
+                    <td>
+                        <div class="btn group btn-group-sm">
+                            <button (click)="eliminarencuentro(encuentro.id_encuentro_partidos)" class="btn btn-danger">Eliminar</button>
+                            <button (click)="editarencuentro(encuentro)" class="btn btn-primary">Editar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+         </table>
+         <div class="row">
+             <div class="col-sm-5">
+                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
+             </div>
+         </div>
+
     </div>
 
-    <div class="col-sm-8">
+    <div class="col-sm-3">
 
-        <div clss="card">
-            <div class="card-header">Formularios de encuentro de partidos</div>
-            <div class="card body">
-                <form [formGroup]="formEncuentros" (ngSubmit)="guardarencuentros()">
+        <div class="card">
+            <div class="card-header"> Formulario De Encuentro De Partidos</div>
+            <div class="card-body">
 
-                    <input formControlName="id_encuentro_partidos" type="hidden">
+                <form [formGroup]="formEncuentros" (ngSubmit)="guardarencuentros()" novalidate>
+
+                    <input formCotrolName="id_encuentro_partido" type="hidden">
+
+                    <input formControlName="titulo" type="hidden">
 
                     <div class="form group">
                         <input formControlName="Titulo" placeholder="Ingrese el Titulo" type="string" class="form-control">
@@ -60,7 +84,10 @@
                         <input formControlName="estado" placeholder="Ingrese el Estado" type="number" class="form-control">
                     </div>
 
-                    <button class="btn btn-succes">Guardar un encuentro </button>
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Guardar un Horario
+                      </button>
                 </form>
             </div>
         </div>
