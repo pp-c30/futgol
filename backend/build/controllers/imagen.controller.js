@@ -32,7 +32,7 @@ class ImagenController {
                 public_id: puid,
                 portada: pd
             };
-            const resultado = yield db.query('insert into imagen set?', [unaImagen]);
+            const resultado = yield db.query('insert into galeria_imagenes set?', [unaImagen]);
             //console.log(ressultado);
             for (let i = 0; i < files.length; i++) {
                 //le espicificamos el path (la ruta) de la imagen guardada en la carpeta uploads
@@ -42,7 +42,7 @@ class ImagenController {
                     imagen_url: resultado_cloudinary.url,
                     public_id: resultado_cloudinary.public_id
                 };
-                yield db.query('insert into imagen_galeria set?', [imagen_galeria]);
+                yield db.query('insert into galeria_imagenes set?', [imagen_galeria]);
                 yield fs_extra_1.default.unlink(files[i].path);
             }
             res.json('se inserto exitosamente');
