@@ -23,6 +23,8 @@ import { GaleriaComponent } from './components/galeria/galeria.component';
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
 import { AdmiImagenComponent } from './component/admi-imagen/admi-imagen.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
+import { AdminImagenComponent } from './componentss/admin-imagen/admin-imagen.component';
+import { AdminDetalleImagenComponent } from './componentss/admin-detalle-imagen/admin-detalle-imagen.component';
 
 
 
@@ -37,7 +39,9 @@ import { NavegacionComponent } from './components/navegacion/navegacion.componen
     GaleriaComponent,
     AsistenciaComponent,
     AdmiImagenComponent,
-    NavegacionComponent
+    NavegacionComponent,
+    AdminImagenComponent,
+    AdminDetalleImagenComponent
   ],
   imports: [
     BrowserModule,
