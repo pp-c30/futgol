@@ -31,6 +31,7 @@ class server {
         this.app.use(asistencia_route_1.default);
         this.app.use(pagos_route_1.default);
         this.app.use(galeria_route_1.default);
+        this.app.use(enrutadorImagen);
         this.app.use(socio_routes_1.default);
         this.app.use(encuentros_routes_1.default);
         this.app.use(horarios_route_1.default);
