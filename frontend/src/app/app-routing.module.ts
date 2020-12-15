@@ -6,10 +6,22 @@ import {EncuentrosComponent}  from  './components/encuentros/encuentros.componen
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
 import { GaleriaComponent } from './components/galeria/galeria.component';
 import { HorariosComponent } from './components/horarios/horarios.component';
+import {AdmiImagenComponent} from "./components/admi-imagen/admi-imagen.component";
 
 
 
 const routes: Routes = [
+  {
+    path:'',
+    redirectTo:'/admi-imagen',
+    pathMatch:'full'
+  },
+  
+  {
+    path:'admi-imagen',
+    component:AdmiImagenComponent
+  },
+
   {
     path:'pagos/:id_socio',
     component:PagosComponent
