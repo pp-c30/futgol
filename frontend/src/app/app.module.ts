@@ -21,6 +21,7 @@ import { EncuentrosService } from './services/encuentros.service';
 
 import { GaleriaComponent } from './components/galeria/galeria.component';
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
+import { CategoriaSocioComponent } from './components/categoria-socio/categoria-socio.component';
 
 
 
@@ -33,7 +34,8 @@ import { AsistenciaComponent } from './components/asistencia/asistencia.componen
     HorariosComponent,
     EncuentrosComponent,
     GaleriaComponent,
-    AsistenciaComponent
+    AsistenciaComponent,
+    CategoriaSocioComponent
   ],
   imports: [
     BrowserModule,
