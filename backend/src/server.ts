@@ -20,7 +20,11 @@ import enrutadorHorarios from "./routes/horarios.route";
 
 import enrutadorCategoria from "./routes/categoria.route";
 
+<<<<<<< HEAD
+import enrutadorAut from "./routes/autenticacion.route";
+=======
 import  enrutadorImagen  from "./routes/galeria.route";
+>>>>>>> 1f32ece2bb4b0f168d1475842f7c0014960604cb
 
 export class server {
 
@@ -52,6 +56,7 @@ export class server {
         this.app.use(enrutadorEncuentros);
         this.app.use(enrutadorHorarios);
         this.app.use(enrutadorCategoria);
+        this.app.use(enrutadorAut);
 
     }
 

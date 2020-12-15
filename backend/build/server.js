@@ -15,7 +15,7 @@ const socio_routes_1 = __importDefault(require("./routes/socio.routes"));
 const encuentros_routes_1 = __importDefault(require("./routes/encuentros.routes"));
 const horarios_route_1 = __importDefault(require("./routes/horarios.route"));
 const categoria_route_1 = __importDefault(require("./routes/categoria.route"));
-const galeria_route_2 = __importDefault(require("./routes/galeria.route"));
+const autenticacion_route_1 = __importDefault(require("./routes/autenticacion.route"));
 class server {
     constructor() {
         this.app = express_1.default();
@@ -31,11 +31,12 @@ class server {
         this.app.use(asistencia_route_1.default);
         this.app.use(pagos_route_1.default);
         this.app.use(galeria_route_1.default);
-        this.app.use(galeria_route_2.default);
+        this.app.use(enrutadorImagen);
         this.app.use(socio_routes_1.default);
         this.app.use(encuentros_routes_1.default);
         this.app.use(horarios_route_1.default);
         this.app.use(categoria_route_1.default);
+        this.app.use(autenticacion_route_1.default);
     }
     middleware() {
         //le permite a nuestro servidor recibir y enviar datos en formato JSON
