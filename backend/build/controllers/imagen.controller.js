@@ -17,6 +17,13 @@ const database_1 = require("../database");
 const fs_extra_1 = __importDefault(require("fs-extra"));
 const cloudinary_1 = __importDefault(require("cloudinary"));
 class ImagenController {
+    listarImagenes(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const db = yield database_1.conexion();
+            let imagenes = yield db.query('selec * from galeria_imagenes');
+            res.json(imagenes);
+        });
+    }
     guardarImagen(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //se accede a los archivos recibidos
@@ -26,14 +33,12 @@ class ImagenController {
             const puid = req.body.public_id;
             const pd = req.body.portada;
             const db = yield database_1.conexion();
-            const unaImagen = {
-                id_galeria: ig,
-                imagen_url: iurl,
-                public_id: puid,
-                portada: pd
+            const unaGaleria = {
+                titulo_imagen: req.body.titulo_imagen,
+                categoria: req.body.categoria,
+                estado: req.body.estado
             };
-            const resultado = yield db.query('insert into galeria_imagenes set?', [unaImagen]);
-            //console.log(ressultado);
+            const resultado = yield db.query('insert into galeria set ?', [unaGaleria]);
             for (let i = 0; i < files.length; i++) {
                 //le espicificamos el path (la ruta) de la imagen guardada en la carpeta uploads
                 const resultado_cloudinary = yield cloudinary_1.default.v2.uploader.upload(files[i].path);

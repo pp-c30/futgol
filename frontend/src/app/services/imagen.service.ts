@@ -17,13 +17,13 @@ export class ImagenService {
    {
     const fd = new FormData();
 
-    fd.append('id_galeria',datosImagen.id_galeria);
+    fd.append('id_galeria',String(datosImagen.id_galeria));
 
-    fd.append('imagen_url'datosImagen.imagen_url);
+    fd.append('imagen_url',datosImagen.imagen_url);
 
-    fd.append('public_id'datosImagen.public_id);
+    fd.append('public_id',datosImagen.public_id);
 
-    fd.append('portada'datosImagen.portada);
+    fd.append('portada',datosImagen.portada);
 
     for (let index = 0; index < files.length; index++) {
       
@@ -31,8 +31,13 @@ export class ImagenService {
 
     }
 
-     return this.http.post('http://localhost:3030/imagen',fd);
+     return this.http.post('http://localhost:3030/galeria_imagenes',fd);
    
+    }
+    
+    getImagen()
+    {
+      return this.http.get<Iimagen[]>('http://localhost:3030/galeria_imagenes');
     }
 
 }

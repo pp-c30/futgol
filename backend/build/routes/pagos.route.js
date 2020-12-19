@@ -2,10 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const pagos_controller_1 = require("../controllers/pagos.controller");
-const verificarToken_1 = require("../controllers/libs/verificarToken");
 let pagosController = new pagos_controller_1.PagosController();
 const enrutadorPagos = express_1.Router();
-enrutadorPagos.route('/pagos/:id_socio').get(verificarToken_1.validarToken, pagosController.listarPagos);
+enrutadorPagos.route('/pagos/:id_socio').get(pagosController.listarPagos);
 enrutadorPagos.route('/pagos').post(pagosController.guardarpagos);
 enrutadorPagos.route('/pagos/:codigo_pagos').delete(pagosController.eleminarPagos);
 enrutadorPagos.route('/pagos/:codigo_pagos').put(pagosController.actualizarPagos);

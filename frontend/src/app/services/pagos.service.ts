@@ -20,6 +20,7 @@ export class PagosService {
 
   savePago(unPago:Ipago)
   {
+    unPago.fecha_pago = unPago.fecha_pago.year+'-'+unPago.fecha_pago.month+'-'+unPago.fecha_pago.day;
    return this.http.post('http://localhost:3030/pagos',unPago);
   }
 

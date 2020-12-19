@@ -8,5 +8,6 @@ const multer_1 = __importDefault(require("../libs/multer"));
 const imagen_controller_1 = require("../controllers/imagen.controller");
 const imagenController = new imagen_controller_1.ImagenController;
 const enrutadorImagen = express_1.Router();
-enrutadorImagen.route('/imagen').post(multer_1.default.array('img_imagen'), imagenController.guardarImagen);
+enrutadorImagen.route('/galeria_imagen').post(multer_1.default.array('img_imagen'), imagenController.guardarImagen);
+enrutadorImagen.route('/galeria_imagen').get(imagenController.listarImagenes);
 exports.default = enrutadorImagen;

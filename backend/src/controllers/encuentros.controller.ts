@@ -9,7 +9,7 @@ export class EncuentrosControllers
         //conecto con la base de datos
         const con= await conexion();
 
-        let encuentros = await con.query('select * from encuentros');
+        let encuentros = await con.query('select * from encuentro_partidos');
 
         return res.json(encuentros);
     }
@@ -23,7 +23,7 @@ export class EncuentrosControllers
         const con = await conexion();
 
         //hago INSERT de un encuentro
-        await con.query('insert into encuentros set ?', [encuentros]);
+        await con.query('insert into encuentro_partidos set ?', [encuentros]);
 
         return res.json('se ha insertado encuentros');
     }
@@ -36,7 +36,7 @@ export class EncuentrosControllers
         //obtenemos conexion con la base de datos
         let con = await conexion();
 
-        await con.query('delete from encuentros where id_encuentro_partidos= ?',id_encuentro_partidos);
+        await con.query('delete from encuentros_partidos where id_encuentro_partidos= ?',id_encuentro_partidos);
 
         return res.json('el encuentro se elimino');
     }
@@ -52,7 +52,7 @@ export class EncuentrosControllers
         //se logra la conexion con la base de datos
         let con = await conexion();
 
-        await con.query('update encuentro set ? where id_encuentros_partidos = ? ', [encuentros,id_encuentro_partidos]);
+        await con.query('update encuentro_partidos set ? where id_encuentro_partidos = ? ', [encuentros,id_encuentro_partidos]);
 
         return res.json('el encuentro se actualizo');
     }
@@ -66,7 +66,7 @@ export class EncuentrosControllers
         let con = await conexion();
         
         //filtro el encuentro a travez de ID
-        let encuentros = await con.query('select * from encuentro where id_encuentro_partidos = ?' ,[id_encuentro_partidos]);
+        let encuentros = await con.query('select * from encuentro_partidos where id_encuentro_partidos = ?' ,[id_encuentro_partidos]);
         
         //consigo el encuentro de partidos
         return res.json(encuentros[0]);

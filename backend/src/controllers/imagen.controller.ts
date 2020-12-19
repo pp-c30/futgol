@@ -8,6 +8,17 @@ import cloudinary from "cloudinary";
 
 
 export class ImagenController {
+
+async listarImagenes(req:Request,res:Response)
+{
+
+    const db = await conexion();
+    
+    let imagenes = await db.query('selec * from galeria_imagenes');
+
+    res.json(imagenes);
+}
+
     public async guardarImagen(req:Request,res:Response)
     {
         //se accede a los archivos recibidos
@@ -21,16 +32,14 @@ export class ImagenController {
 
         const db = await conexion();
 
-        const unaImagen = {
-            id_galeria:ig,
-            imagen_url:iurl,
-            public_id:puid,
-            portada:pd
-        }  
-        
-        const resultado = await db.query('insert into galeria_imagenes set?',[unaImagen]);
 
-        //console.log(ressultado);
+       const unaGaleria = {
+            titulo_imagen:req.body.titulo_imagen,
+            categoria:req.body.categoria,
+            estado:req.body.estado
+        }
+
+        const resultado = await db.query('insert into galeria set ?',[unaGaleria]);
 
         for(let i=0; i < files.length; i++){
 
@@ -41,6 +50,7 @@ export class ImagenController {
                 id_galeria:resultado.insertId,
                 imagen_url:resultado_cloudinary.url,
                 public_id:resultado_cloudinary.public_id
+            
                 
             }
 

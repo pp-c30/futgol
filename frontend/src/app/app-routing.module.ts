@@ -1,6 +1,6 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PagosComponent } from "./componets/pagos/pagos.component";
+import { PagosComponent } from "./component/pagos/pagos.component";
 import { SocioComponent } from './components/socio/socio.component';
 import {EncuentrosComponent}  from  './components/encuentros/encuentros.component';
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
@@ -13,7 +13,7 @@ import {AdmiImagenComponent} from "./components/admi-imagen/admi-imagen.componen
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'/admi-imagen',
+    redirectTo:'/socios',
     pathMatch:'full'
   },
   

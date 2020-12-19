@@ -4,6 +4,7 @@ import { SocioService } from "../../services/socio.service";
 
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ISocio } from 'src/app/models/socio';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-socio',
@@ -17,7 +18,7 @@ export class SocioComponent implements OnInit {
   p:number = 1;
   buscarSocio:any;
 
-  constructor(private socioServ:SocioService,private fb: FormBuilder) { 
+  constructor(private socioServ:SocioService,private fb: FormBuilder, private router:Router) { 
 
     this.formSocio = this.fb.group({
 
@@ -113,7 +114,10 @@ export class SocioComponent implements OnInit {
      
    } 
   
-
+verPagos(id_socio:number)
+{
+  this.router.navigate(['/pagos',id_socio]);
+}
 
 
 

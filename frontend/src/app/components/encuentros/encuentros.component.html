@@ -61,15 +61,13 @@
 
                 <form [formGroup]="formEncuentros" (ngSubmit)="guardarencuentros()" novalidate>
 
-                    <input formCotrolName="id_encuentro_partido" type="hidden">
-
-                    <input formControlName="titulo" type="hidden">
+                    <input formControlName="id_encuentro_partido" type="hidden">
 
                     <div class="form group">
-                        <input formControlName="Titulo" placeholder="Ingrese el Titulo" type="string" class="form-control">
+                        <input formControlName="titulo" placeholder="Ingrese el Titulo" type="string" class="form-control">
                     </div>
                     <div class="form group">
-                        <input formControlName="Descripcion" placeholder="Ingrese la Descripcion" type="text" class="form-control">
+                        <input formControlName="descripcion" placeholder="Ingrese la Descripcion" type="text" class="form-control">
                     </div>
                     <div class="form group">
                         <input formControlName="fecha_hora" placeholder="Ingrese la Fecha y Hora" type="date" class="form-control">
@@ -85,7 +83,7 @@
                     </div>
 
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Guardar un Horario
                       </button>
                 </form>

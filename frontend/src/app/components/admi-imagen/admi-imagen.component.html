@@ -6,36 +6,85 @@
             <div class="card-header">
                 Formulario Imagen
             </div>
-            <div class="card body"></div>
-            <form>
+            <div class="card-body">
+            <form [formGroup]="formImagen" (ngSubmit)="guardarImagen()" novalidate>
                 <div class="form-group">
-                     <input placeholder="Ingrese id_imagen" type="text" class="form-control">
+                     <input formControlName="id_imagen" placeholder="Ingrese id_imagen" type="text" class="form-control">
                 </div>
                 
                 <div class="form-group">
-                    <input placeholder="Ingrese la url de la imagen" type="text" class="form-control">
+                    <input formControlName="url_imagen"  placeholder="Ingrese la url de la imagen" type="text" class="form-control">
                </div>
 
                <div class="form-group">
-                <input placeholder="Ingrese el public ID" type="text" class="form-control">
+                <input formControlName="public_id"  placeholder="Ingrese el public ID" type="text" class="form-control">
                </div>
 
                <div class="form-group">
-                <input placeholder="Ingrese la portada" type="text" class="form-control">
+                <input formControlName="portada"  placeholder="Ingrese la portada" type="text" class="form-control">
                </div>
 
                <div class="form-group">
-                <input class="" type="file">
+                <input (change)="mostrarImagenSeleccionada($event)" formControlName="archivo"  class="form-control-file" type="file" name="" id="" multiple>
                </div>
 
                <div class="form-group">
-                   <button class="btn btn-success">guardar Imagen</button>
+                   <button [disabled]="formImagen.invalid" class="btn btn-success">guardar Imagen</button>
                </div>
-            </form>
+              </form>
+
+              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div *ngform="let url of imagenes_url; let isFirst = first" [ngClass]="{active:isFirst}" class="carousel-item">
+                    <img [src]="url" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
     
         </div>
      </div>
-
-    <div class="col-lg-6">
     </div>
+    <div class="col-lg-6">
+
+        <div class="card">
+        <div class="card-header">
+            grilla imagen
+        </div>
+        <div class="card body">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>url imagen</th>
+                        <th>public id</th>
+                        <th>portada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let fila of imagen">
+                        <td>{{fila.id_galeria}}</td>
+                        <td>{{fila.url_imagen}}</td>
+                        <td>{{fila.public_id}}</td>
+                        <td>{{fila.portada}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+        </div>
+    </div>
+
 </div>
+
+<ngx-spinner style="color: white;">cargando....</ngx-spinner>

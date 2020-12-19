@@ -66,8 +66,9 @@
                     <td>{{socio.fecha_nacimiento}}</td>
                     <td>
                         <div class=" btn-group-sm">
-                            <button (click)="eliminarSocio(socio.id_socio);" class="btn btn.danger">Eliminar</button>
-                            <button (click)="editarSocio(socio)" class="btn btn.primary" data-toggle="modal" data-target="#exampleModal">Editar</button>
+                            <button (click)="eliminarSocio(socio.id_socio);" class="btn btn-danger">Eliminar</button>
+                            <button (click)="editarSocio(socio)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Editar</button>
+                            <button (click)="verPagos(socio.id_socio)">Ver pagos</button>
                         </div>
                     </td>
                 </tr>

@@ -16,7 +16,7 @@ class EncuentrosControllers {
         return __awaiter(this, void 0, void 0, function* () {
             //conecto con la base de datos
             const con = yield database_1.conexion();
-            let encuentros = yield con.query('select * from encuentros');
+            let encuentros = yield con.query('select * from encuentro_partidos');
             return res.json(encuentros);
         });
     }
@@ -27,7 +27,7 @@ class EncuentrosControllers {
             //conecto con la base de datos
             const con = yield database_1.conexion();
             //hago INSERT de un encuentro
-            yield con.query('insert into encuentros set ?', [encuentros]);
+            yield con.query('insert into encuentro_partidos set ?', [encuentros]);
             return res.json('se ha insertado encuentros');
         });
     }
@@ -37,7 +37,7 @@ class EncuentrosControllers {
             let id_encuentro_partidos = req.params.id;
             //obtenemos conexion con la base de datos
             let con = yield database_1.conexion();
-            yield con.query('delete from encuentros where id_encuentro_partidos= ?', id_encuentro_partidos);
+            yield con.query('delete from encuentros_partidos where id_encuentro_partidos= ?', id_encuentro_partidos);
             return res.json('el encuentro se elimino');
         });
     }
@@ -49,7 +49,7 @@ class EncuentrosControllers {
             let encuentros = req.body;
             //se logra la conexion con la base de datos
             let con = yield database_1.conexion();
-            yield con.query('update encuentro set ? where id_encuentros_partidos = ? ', [encuentros, id_encuentro_partidos]);
+            yield con.query('update encuentro_partidos set ? where id_encuentro_partidos = ? ', [encuentros, id_encuentro_partidos]);
             return res.json('el encuentro se actualizo');
         });
     }
@@ -60,7 +60,7 @@ class EncuentrosControllers {
             //se obtiene conexion con base de datos
             let con = yield database_1.conexion();
             //filtro el encuentro a travez de ID
-            let encuentros = yield con.query('select * from encuentro where id_encuentro_partidos = ?', [id_encuentro_partidos]);
+            let encuentros = yield con.query('select * from encuentro_partidos where id_encuentro_partidos = ?', [id_encuentro_partidos]);
             //consigo el encuentro de partidos
             return res.json(encuentros[0]);
         });
