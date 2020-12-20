@@ -88,6 +88,7 @@ eliminarhorarios(id:number)
       respuesta => {
         console.log(respuesta);
         this.obtenerhorarios();
+        alert(respuesta);
       },
       error => console.log(error)
     );

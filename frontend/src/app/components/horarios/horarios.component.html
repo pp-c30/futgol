@@ -21,6 +21,7 @@
                     <th>Ubicacion</th>
                     <th>Direccion</th>
                     <th>Categoria</th>
+                    <th>Operaciones</th>
 
                 </tr>
             </thead>
@@ -33,9 +34,9 @@
                     <td>{{horario.direccion}}</td>
                     <td>{{horario.categoria}}</td>
                     <td>
-                        <div class="btn group btn-group-sm">
-                            <button (click)="eliminarhorarios(horario.id_horario_entrenamiento);" class="btn btn.danger">Eliminar</button>
-                            <button (click)="editarhorarios(horario)" class="btn btn.primary">Editar</button>
+                        <div class="btn-group-sm">
+                            <button (click)="eliminarhorarios(horario.id_horario_entrenamiento);" class="btn btn-danger">Eliminar</button>
+                            <button (click)="editarhorarios(horario)" class="btn btn-primary">Editar</button>
                         </div>
                     </td>
                 </tr>
@@ -55,14 +56,14 @@
             <div class="card-header"> Formulario De Horario De Entrenamiento</div>
             <div class="card-body">
 
-                <form [formGroup]="formHorarios" (ngSubmit)="guardarhorarios()" novalidate>
+                <form [formGroup]="formHorarios" (ngSubmit)="guardarhorarios()" >
 
                     <input formCotrolName="id_horario_entrenamiento" type="hidden">
 
                     <input formControlName="fecha_hora" type="hidden">
 
                     <div class="form group">
-                        <input formControlName="fecha_hora" placeholder="Ingrese la Fecha y Hora" type="number" class="form-control">
+                        <input formControlName="fecha_hora"placeholder="Ingrese fecha y hora" type="datetime-local" class="form-control">
                     </div>
                     <div class="form group">
                         <input formControlName="ubicacion" placeholder="Ingrese la Ubicacion" type="text" class="form-control">
@@ -74,7 +75,7 @@
                         <input formControlName="categoria" placeholder="Ingrese la Categoria" type="number" class="form-control">
                     </div>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button class="btn btn-primary">
                         Guardar un Horario
                       </button>
                 </form>

@@ -16,7 +16,7 @@ class HorariosControllers {
         return __awaiter(this, void 0, void 0, function* () {
             //conecto con la base de datos
             const con = yield database_1.conexion();
-            let horarios = yield con.query('select * from horarios');
+            let horarios = yield con.query('select *,date_format(fecha_hora,"%d/%m/%Y %H:%i:%s") as fecha_hora from horario_entrenamiento');
             return res.json(horarios);
         });
     }
@@ -27,7 +27,7 @@ class HorariosControllers {
             //conecto con la base de datos
             const con = yield database_1.conexion();
             //hago INSERT de un horario
-            yield con.query('insert into horarios set ?', [horarios]);
+            yield con.query('insert into horario_entrenamiento set ?', [horarios]);
             return res.json('se ha insertado horarios');
         });
     }
@@ -37,7 +37,7 @@ class HorariosControllers {
             let id_horario_entrenamiento = req.params.id;
             //obtenemos conexion con la base de datos
             let con = yield database_1.conexion();
-            yield con.query('delete from horarios where id_horario_entrenamiento= ?', id_horario_entrenamiento);
+            yield con.query('delete from horario_entrenamiento where id_horario_entrenamiento= ?', id_horario_entrenamiento);
             return res.json('el horario se elimino');
         });
     }
@@ -49,7 +49,7 @@ class HorariosControllers {
             let horarios = req.body;
             //se logra la conexion con la base de datos
             let con = yield database_1.conexion();
-            yield con.query('update horarios set ? where id_horarios_entrenamiento = ? ', [horarios, id_horario_entrenamiento]);
+            yield con.query('update horario_entrenamiento set ? where id_horario_entrenamiento = ? ', [horarios, id_horario_entrenamiento]);
             return res.json('el horario se actualizo');
         });
     }
@@ -60,7 +60,7 @@ class HorariosControllers {
             //se obtiene conexion con base de datos
             let con = yield database_1.conexion();
             //filtro el horario a travez de ID
-            let horarios = yield con.query('select * from horarios where id_horario_entrenamiento = ?', [id_horario_entrenamiento]);
+            let horarios = yield con.query('select * from horario_entrenamiento where id_horario_entrenamiento = ?', [id_horario_entrenamiento]);
             //encuentro el horarios
             return res.json(horarios[0]);
         });

@@ -9,7 +9,7 @@ export class HorariosControllers
         //conecto con la base de datos
         const con= await conexion();
 
-        let horarios = await con.query('select * from horarios');
+        let horarios = await con.query('select *,date_format(fecha_hora,"%d/%m/%Y %H:%i:%s") as fecha_hora from horario_entrenamiento');
 
         return res.json(horarios);
     }
@@ -23,7 +23,7 @@ export class HorariosControllers
         const con = await conexion();
 
         //hago INSERT de un horario
-        await con.query('insert into horarios set ?', [horarios]);
+        await con.query('insert into horario_entrenamiento set ?', [horarios]);
 
         return res.json('se ha insertado horarios');
     }
@@ -36,7 +36,7 @@ export class HorariosControllers
         //obtenemos conexion con la base de datos
         let con = await conexion();
 
-        await con.query('delete from horarios where id_horario_entrenamiento= ?',id_horario_entrenamiento);
+        await con.query('delete from horario_entrenamiento where id_horario_entrenamiento= ?',id_horario_entrenamiento);
 
         return res.json('el horario se elimino');
     }
@@ -52,7 +52,7 @@ export class HorariosControllers
         //se logra la conexion con la base de datos
         let con = await conexion();
 
-        await con.query('update horarios set ? where id_horarios_entrenamiento = ? ', [horarios,id_horario_entrenamiento]);
+        await con.query('update horario_entrenamiento set ? where id_horario_entrenamiento = ? ', [horarios,id_horario_entrenamiento]);
 
         return res.json('el horario se actualizo');
     }
@@ -66,7 +66,7 @@ export class HorariosControllers
         let con = await conexion();
         
         //filtro el horario a travez de ID
-        let horarios = await con.query('select * from horarios where id_horario_entrenamiento = ?' ,[id_horario_entrenamiento]);
+        let horarios = await con.query('select * from horario_entrenamiento where id_horario_entrenamiento = ?' ,[id_horario_entrenamiento]);
         
         //encuentro el horarios
         return res.json(horarios[0]);
