@@ -9,7 +9,7 @@ export class EncuentrosControllers
         //conecto con la base de datos
         const con= await conexion();
 
-        let encuentros = await con.query('select * from encuentro_partidos');
+        let encuentros = await con.query('select *,date_format(fecha_hora,"%d/%m/%Y %H:%i:%s") as fecha_hora, (select descripcion from categoria_socio where id_encuentro_partidos = e.categoria) as categoria from encuentro_partidos e');
 
         return res.json(encuentros);
     }
@@ -36,7 +36,7 @@ export class EncuentrosControllers
         //obtenemos conexion con la base de datos
         let con = await conexion();
 
-        await con.query('delete from encuentros_partidos where id_encuentro_partidos= ?',id_encuentro_partidos);
+        await con.query('delete from encuentro_partidos where id_encuentro_partidos= ?',[id_encuentro_partidos]);
 
         return res.json('el encuentro se elimino');
     }

@@ -16,7 +16,7 @@ class EncuentrosControllers {
         return __awaiter(this, void 0, void 0, function* () {
             //conecto con la base de datos
             const con = yield database_1.conexion();
-            let encuentros = yield con.query('select * from encuentro_partidos');
+            let encuentros = yield con.query('select *,date_format(fecha_hora,"%d/%m/%Y %H:%i:%s") as fecha_hora, (select descripcion from categoria_socio where id_encuentro_partidos = e.categoria) as categoria from encuentro_partidos e');
             return res.json(encuentros);
         });
     }
@@ -37,7 +37,7 @@ class EncuentrosControllers {
             let id_encuentro_partidos = req.params.id;
             //obtenemos conexion con la base de datos
             let con = yield database_1.conexion();
-            yield con.query('delete from encuentros_partidos where id_encuentro_partidos= ?', id_encuentro_partidos);
+            yield con.query('delete from encuentro_partidos where id_encuentro_partidos= ?', [id_encuentro_partidos]);
             return res.json('el encuentro se elimino');
         });
     }

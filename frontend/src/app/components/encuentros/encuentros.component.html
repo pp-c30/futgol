@@ -23,6 +23,7 @@
                     <th>Ubicacion</th>  
                     <th>Categoria</th>  
                     <th>Estado</th>
+                    <th>Operaciones</th>
 
                 </tr>
             </thead>
@@ -37,7 +38,7 @@
                     <td>{{encuentro.categoria}}</td>
                     <td>{{encuentro.estado}}</td>
                     <td>
-                        <div class="btn group btn-group-sm">
+                        <div class="btn-group-sm">
                             <button (click)="eliminarencuentro(encuentro.id_encuentro_partidos)" class="btn btn-danger">Eliminar</button>
                             <button (click)="editarencuentro(encuentro)" class="btn btn-primary">Editar</button>
                         </div>
@@ -70,7 +71,7 @@
                         <input formControlName="descripcion" placeholder="Ingrese la Descripcion" type="text" class="form-control">
                     </div>
                     <div class="form group">
-                        <input formControlName="fecha_hora" placeholder="Ingrese la Fecha y Hora" type="date" class="form-control">
+                        <input formControlName="fecha_hora" placeholder="Ingrese la Fecha y Hora" type="datetime-local" class="form-control">
                     </div>
                     <div class="form group">
                         <input formControlName="ubicacion" placeholder="Ingrese la Ubicacion" type="text" class="form-control">

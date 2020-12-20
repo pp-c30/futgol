@@ -6,6 +6,8 @@ import {FormBuilder, FormGroup } from "@angular/forms";
 
 import { iencuentros } from 'src/app/models/encuentros';
 
+import { ICategoria_socio } from 'src/app/models/categoria_socio';
+
 @Component({
   selector:'app.encuentros',
   templateUrl: './encuentros.component.html',
@@ -14,6 +16,7 @@ import { iencuentros } from 'src/app/models/encuentros';
 export class EncuentrosComponent implements OnInit {
 
   listencuentros =[];
+  listCategoria : ICategoria_socio []=[];
 
   formEncuentros: FormGroup;
   p:number = 1;

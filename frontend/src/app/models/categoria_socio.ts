@@ -1,6 +1,6 @@
 export interface ICategoria_socio {
 
-    Adulto:number;
-    Infantil:number;
+    id_categoria_socio:number;
+    descripcion:string;
     
 }
