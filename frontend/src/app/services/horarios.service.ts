@@ -14,23 +14,23 @@ export class HorariosService {
 
   gethorarios()
   {
-    return this.http.get<ihorarios[]>('http://localhost:3030/horario_entrenamiento');
+    return this.http.get<ihorarios[]>('http://localhost:3030/horarios');
   }
 
   savehorarios(unHorario:ihorarios){
-    return this.http.post('http://localhost:3030/horario_entrenamiento',unHorario);
+    return this.http.post('http://localhost:3030/horarios',unHorario);
     
   }
 
   updatehorarios(unHorario:ihorarios)
   {
     let id:number = unHorario.id_horario_entrenamiento;
-    return this.http.put('http://localhost:3030/horario_entrenamiento/'+id,unHorario);
+    return this.http.put('http://localhost:3030/horarios/'+id,unHorario);
   }
 
   deletehorarios(id:number)
   {
-    return this.http.delete('http://localhost:3030/horario_entrenamiento/'+id);
+    return this.http.delete('http://localhost:3030/horarios/'+id);
   }
 
 }
