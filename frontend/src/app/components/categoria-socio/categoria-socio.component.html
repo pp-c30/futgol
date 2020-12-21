@@ -1,1 +1,69 @@
-<p>categoria-socio works!</p>
+<div class="row">
+
+
+    <div class="col-sm-9">
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input placeholder="ingrese criterio de busqueda" [(ngModel)]="buscarcategoria" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+       
+        <table class="table table-striped">
+
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let horario of listhorarios | filter:buscarhorarios | paginate:{itemsPerPage:3,currentPage:p}">
+                    <td>{{categoria.id_categoria_socio}}</td>
+                    <td>{{categoria.descripcion}}</td>
+                    <td>
+                        <div class="btn-group-sm">
+                            <button (click)="eliminarcategoria(categoria.id_categoria_socio);" class="btn btn-danger">Eliminar</button>
+                            <button (click)="editarcategoria(categoria)" class="btn btn-primary">Editar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+         </table>
+         <div class="row">
+             <div class="col-sm-5">
+                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
+             </div>
+         </div>
+
+    </div>
+
+    <div class="col-sm-3">
+
+        <div class="card">
+            <div class="card-header"> Formulario De Categoria Socio</div>
+            <div class="card-body">
+
+                <form [formGroup]="formCategoria" (ngSubmit)="guardarcateogoria()" >
+
+                    <input formCotrolName="id_categoria_socio" type="hidden">
+
+                    <input formControlName="descripcion" type="hidden">
+                        
+                    <div class="form group">
+                        <input formControlName="descripcion"placeholder="Ingrese la descripcion" type="datetime-local" class="form-control">
+                    </div>
+
+                    <button class="btn btn-primary">
+                        Guardar Una Categoria
+                      </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

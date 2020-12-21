@@ -10,7 +10,7 @@ export class HorariosControllers
         const con= await conexion();
 
         let horarios = await con.query('select *,date_format(fecha_hora,"%d/%m/%Y %H:%i:%s") as fecha_hora from horario_entrenamiento');
-
+        
         return res.json(horarios);
     }
 
