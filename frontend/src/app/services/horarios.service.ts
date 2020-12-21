@@ -14,11 +14,11 @@ export class HorariosService {
 
   gethorarios()
   {
-    return this.http.get<ihorarios[]>('http://localhost:3030/horarios/');
+    return this.http.get<ihorarios[]>('http://localhost:3030/horarios');
   }
 
   savehorarios(unHorario:ihorarios){
-    return this.http.post('http://localhost:3030/horarios/',unHorario);
+    return this.http.post('http://localhost:3030/horarios',unHorario);
     
   }
 
