@@ -22,7 +22,7 @@ import { EncuentrosService } from './services/encuentros.service';
 import { GaleriaComponent } from './components/galeria/galeria.component';
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
 
-import { CategoriaSocioComponent } from './components/categoria-socio/categoria-socio.component';
+import { CategoriaComponent } from "./components/categoria-socio/categoria-socio.component";
 
 import { AdmiImagenComponent } from './components/admi-imagen/admi-imagen.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
@@ -42,7 +42,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     EncuentrosComponent,
     GaleriaComponent,
     AsistenciaComponent,
-    CategoriaSocioComponent,
+    CategoriaComponent,
     AdmiImagenComponent,
     NavegacionComponent,
     AdmiDetalleImagenComponent
