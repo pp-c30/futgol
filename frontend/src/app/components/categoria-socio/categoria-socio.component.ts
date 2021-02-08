@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 import { CategoriaService } from "../../services/categoria-socio.service";
 
 import {FormBuilder, FormGroup } from "@angular/forms";
@@ -8,17 +9,17 @@ import { ICategoria_socio } from 'src/app/models/categoria_socio';
 
 
 @Component({
-  selector:'app.categoria',
-  templateUrl: './categoria.component.html',
-  styleUrls: ['categoria.component.css']
+  selector: 'app-categoria-socio',
+  templateUrl: './categoria-socio.component.html',
+  styleUrls: ['./categoria-socio.component.css']
 })
-export class CategoriaComponent implements OnInit {
+export class CategoriaSocioComponent implements OnInit {
 
   listcategoria =[];
 
   formCategoria: FormGroup;
   p:number = 1;
-  buscarhorarios:any;
+  buscarcategoria:any;
 
   constructor(private categoriaServ:CategoriaService,private fb: FormBuilder) { 
 

@@ -62,7 +62,7 @@ export class server {
 
     middleware()
     {
-        //le permite a nuestro servidor recibir y enviar datos en formato JSON
+        
         this.app.use(express.json());
 
         //mustra de las peticiones

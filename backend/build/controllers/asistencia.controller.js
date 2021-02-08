@@ -17,7 +17,7 @@ class AsistenciaController {
         return __awaiter(this, void 0, void 0, function* () {
             //se logra la connexion con la base de datos 
             const db = yield database_1.conexion();
-            let asistencia = yield db.query('select * from asistencia');
+            let asistencia = yield db.query('select *,date_format(fecha_asistencia,"%d/%m/%Y") as fecha_asistencia from asistencia');
             return res.json(asistencia);
         });
     }

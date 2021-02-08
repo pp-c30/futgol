@@ -62,17 +62,20 @@
                     <input formControlName="id_socio" type="hidden">
 
                   
-                    <div class="form-group">
-                        <input formControlName="id_asistencia" type="text" placeholder="ingrese id_asistencia" class="form-control">
-                    </div>
-
+                    
                     <div class="form-group">
                         <input formControlName="id_socio" type="text" placeholder="ingrese socio" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <input formControlName="fecha_asistencia" type="number" placeholder="ingrese fecha de asistencia" class="form-control">
-                    </div>
+                        <div class="input-group">
+                            <input formControlName="fecha_asistencia" class="form-control" placeholder="ingrese fecha"
+                                   name="dp" ngbDatepicker #d="ngbDatepicker">
+                            <div class="input-group-append">
+                              <button class="btn btn-primary calendar" (click)="d.toggle()" type="button"></button>
+                            </div>
+                          </div>
+                    </div> 
 
                     <div class="form-group">
                         <input formControlName="asistencia" type="text" placeholder="ingrese la asistencia" class="form-control">

@@ -40,7 +40,6 @@ class server {
         this.app.use(autenticacion_route_1.default);
     }
     middleware() {
-        //le permite a nuestro servidor recibir y enviar datos en formato JSON
         this.app.use(express_1.default.json());
         //mustra de las peticiones
         this.app.use(morgan_1.default('dev'));

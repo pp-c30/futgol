@@ -7,7 +7,7 @@ import { AsistenciaComponent } from './components/asistencia/asistencia.componen
 import { GaleriaComponent } from './components/galeria/galeria.component';
 import { HorariosComponent } from './components/horarios/horarios.component';
 import {AdmiImagenComponent} from "./components/admi-imagen/admi-imagen.component";
-import { CategoriaComponent } from './components/categoria-socio/categoria-socio.component';
+import { CategoriaSocioComponent } from "./components/categoria-socio/categoria-socio.component";
 
 
 
@@ -51,7 +51,7 @@ const routes: Routes = [
   },
   {
     path:'categoria-socio',
-    component: CategoriaComponent
+    component: CategoriaSocioComponent
   }
 
 ];

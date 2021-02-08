@@ -12,7 +12,7 @@ export class AsistenciaController
         //se logra la connexion con la base de datos 
         const db = await conexion();
 
-        let asistencia = await db.query('select * from asistencia');
+        let asistencia = await db.query('select *,date_format(fecha_asistencia,"%d/%m/%Y") as fecha_asistencia from asistencia');
 
         return res.json(asistencia);
 

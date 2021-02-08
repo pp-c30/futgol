@@ -22,7 +22,7 @@
             </thead>
 
             <tbody>
-                <tr *ngFor="let horario of listhorarios | filter:buscarhorarios | paginate:{itemsPerPage:3,currentPage:p}">
+                <tr *ngFor="let categoria of listcategoria | filter:buscarcategoria| paginate:{itemsPerPage:3,currentPage:p}">
                     <td>{{categoria.id_categoria_socio}}</td>
                     <td>{{categoria.descripcion}}</td>
                     <td>
@@ -48,14 +48,12 @@
             <div class="card-header"> Formulario De Categoria Socio</div>
             <div class="card-body">
 
-                <form [formGroup]="formCategoria" (ngSubmit)="guardarcateogoria()" >
+                <form [formGroup]="formCategoria" (ngSubmit)="guardarcategoria()" >
 
                     <input formCotrolName="id_categoria_socio" type="hidden">
-
-                    <input formControlName="descripcion" type="hidden">
                         
                     <div class="form group">
-                        <input formControlName="descripcion"placeholder="Ingrese la descripcion" type="datetime-local" class="form-control">
+                        <input formControlName="descripcion"placeholder="Ingrese la descripcion" type="text" class="form-control">
                     </div>
 
                     <button class="btn btn-primary">
